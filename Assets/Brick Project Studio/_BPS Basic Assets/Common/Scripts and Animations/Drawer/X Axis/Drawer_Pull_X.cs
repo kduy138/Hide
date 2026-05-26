@@ -11,7 +11,6 @@ namespace SojaExiles
 
 		public Animator pull_01;
 		public bool open;
-		public Transform Player;
 
 		void Start()
 		{
@@ -21,9 +20,9 @@ namespace SojaExiles
 		void OnMouseOver()
 		{
 			{
-				if (Player)
+				if (Player.instance)
 				{
-					float dist = Vector3.Distance(Player.position, transform.position);
+					float dist = Vector3.Distance(Player.instance.transform.position, transform.position);
 					if (dist < 10)
 					{
 						print("object name");

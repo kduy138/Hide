@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
     public static GameInput instance;
+
+    public event EventHandler OnCrouchAction;
 
     private Player_InputActions playerInputActions;
 
@@ -13,11 +17,20 @@ public class GameInput : MonoBehaviour
         playerInputActions = new Player_InputActions();
 
         playerInputActions.Player.Enable();
+
+        playerInputActions.Player.Crouch.performed += Crouch_performed;
     }
 
     private void OnDestroy()
     {
+        playerInputActions.Player.Crouch.performed -= Crouch_performed;
+
         playerInputActions.Dispose();
+    }
+
+    private void Crouch_performed(InputAction.CallbackContext context)
+    {
+        OnCrouchAction?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetInputVectorNormalized()
