@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameInput.instance.OnCrouchAction += GameInput_OnCrouchAction;
+        GameInput.instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
     private void FixedUpdate()
@@ -38,6 +39,11 @@ public class Player : MonoBehaviour
     private void GameInput_OnCrouchAction(object sender, System.EventArgs e)
     {
         isCrouching = !isCrouching;
+    }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+
     }
 
     private void HandlePlayerMovement()

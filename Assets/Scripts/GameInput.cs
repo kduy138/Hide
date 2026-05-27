@@ -7,6 +7,7 @@ public class GameInput : MonoBehaviour
     public static GameInput instance;
 
     public event EventHandler OnCrouchAction;
+    public event EventHandler OnInteractAction;
 
     private Player_InputActions playerInputActions;
 
@@ -19,6 +20,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Enable();
 
         playerInputActions.Player.Crouch.performed += Crouch_performed;
+        playerInputActions.Player.Interact.performed += Interact_performed;
     }
 
     private void OnDestroy()
@@ -31,6 +33,11 @@ public class GameInput : MonoBehaviour
     private void Crouch_performed(InputAction.CallbackContext context)
     {
         OnCrouchAction?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Interact_performed(InputAction.CallbackContext obj)
+    {
+        OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetInputVectorNormalized()
