@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class Phone : MonoBehaviour
 {
-    private Player phoneObjectParent;
-
-    public void SetPhoneParent()
+    public void Interact()
     {
+        if (Player.instance)
+        {
+            Player.instance.SetPlayerHasPhone(true);
+            DestroySelf();
+        }
+    }
 
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
