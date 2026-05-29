@@ -1715,7 +1715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951036482230332}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036486027423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4330,7 +4329,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951036577589117}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036579085130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8418,7 +8416,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951036678117252}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036689234875
 GameObject:
   m_ObjectHideFlags: 0
@@ -8864,7 +8861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951036693282146}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036693892050
 GameObject:
   m_ObjectHideFlags: 0
@@ -9803,7 +9799,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951036720542906}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036724759772
 GameObject:
   m_ObjectHideFlags: 0
@@ -10180,7 +10175,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951036730664954}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036736956149
 GameObject:
   m_ObjectHideFlags: 0
@@ -10385,7 +10379,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951036740473768}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036744089437
 GameObject:
   m_ObjectHideFlags: 0
@@ -13426,7 +13419,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951036819958091}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951036819958091
 Animator:
   serializedVersion: 7
@@ -16371,7 +16363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951036897961151}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036898518023
 GameObject:
   m_ObjectHideFlags: 0
@@ -16442,7 +16433,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951036898518021}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951036898518021
 Animator:
   serializedVersion: 7
@@ -16819,7 +16809,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951036907045937}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036911554934
 GameObject:
   m_ObjectHideFlags: 0
@@ -17522,7 +17511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951036922992323}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036930889069
 GameObject:
   m_ObjectHideFlags: 0
@@ -18973,7 +18961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951036970686444}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951036976140034
 GameObject:
   m_ObjectHideFlags: 0
@@ -19785,7 +19772,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037007337842}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037007337842
 Animator:
   serializedVersion: 7
@@ -20780,7 +20766,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037038503350}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037047431102
 GameObject:
   m_ObjectHideFlags: 0
@@ -22022,7 +22007,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037082031592}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037082031592
 Animator:
   serializedVersion: 7
@@ -24574,7 +24558,7 @@ GameObject:
   - component: {fileID: 808951037151754063}
   - component: {fileID: 808951037151754056}
   - component: {fileID: 808951037151754057}
-  - component: {fileID: 808951037151754058}
+  - component: {fileID: 637439666405192047}
   m_Layer: 0
   m_Name: ClosetDoor_Base
   m_TagString: Untagged
@@ -24676,7 +24660,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06565454, y: 2.8244824, z: 0.70461285}
   m_Center: {x: 0.029670998, y: 0.055483937, z: 0.34915048}
---- !u!114 &808951037151754058
+--- !u!114 &637439666405192047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24685,12 +24669,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 808951037151754052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469e00e876fb40142af620db2b198643, type: 3}
+  m_Script: {fileID: 11500000, guid: 072c4248094b5a3409f02ca9e3cd7fb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Closetopenandclose: {fileID: 808951037824671197}
-  open: 0
-  Player: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ClosetDoorChild
 --- !u!1 &808951037156199664
 GameObject:
   m_ObjectHideFlags: 0
@@ -25146,7 +25127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037159668272}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037159668272
 Animator:
   serializedVersion: 7
@@ -30361,7 +30341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951037331085881}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037336216855
 GameObject:
   m_ObjectHideFlags: 0
@@ -30694,7 +30673,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037338500426}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037341022573
 GameObject:
   m_ObjectHideFlags: 0
@@ -32651,7 +32629,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037388456197}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037388456197
 Animator:
   serializedVersion: 7
@@ -32766,7 +32743,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037391818666}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037394732629
 GameObject:
   m_ObjectHideFlags: 0
@@ -34491,7 +34467,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037434953818}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037436391294
 GameObject:
   m_ObjectHideFlags: 0
@@ -34801,7 +34776,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951037436814446}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037440345627
 GameObject:
   m_ObjectHideFlags: 0
@@ -35314,7 +35288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037448175238}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037454425748
 GameObject:
   m_ObjectHideFlags: 0
@@ -36175,7 +36148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037469216633}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037475977293
 GameObject:
   m_ObjectHideFlags: 0
@@ -37308,7 +37280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951037514292034}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037520086742
 GameObject:
   m_ObjectHideFlags: 0
@@ -39276,7 +39247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037585686645}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037586257928
 GameObject:
   m_ObjectHideFlags: 0
@@ -39711,7 +39681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037599700775}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037599700775
 Animator:
   serializedVersion: 7
@@ -39978,7 +39947,7 @@ GameObject:
   - component: {fileID: 808951037621725826}
   - component: {fileID: 808951037621725827}
   - component: {fileID: 808951037621725852}
-  - component: {fileID: 808951037621725853}
+  - component: {fileID: 8432131019371394916}
   m_Layer: 0
   m_Name: ClosetDoor_Base
   m_TagString: Untagged
@@ -40080,7 +40049,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06565454, y: 2.8244824, z: 0.70461285}
   m_Center: {x: 0.029670998, y: 0.055483937, z: 0.34915048}
---- !u!114 &808951037621725853
+--- !u!114 &8432131019371394916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40089,12 +40058,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 808951037621725855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469e00e876fb40142af620db2b198643, type: 3}
+  m_Script: {fileID: 11500000, guid: 072c4248094b5a3409f02ca9e3cd7fb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Closetopenandclose: {fileID: 808951037671042580}
-  open: 0
-  Player: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ClosetDoorChild
 --- !u!1 &808951037624987323
 GameObject:
   m_ObjectHideFlags: 0
@@ -40359,7 +40325,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951037632786713}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037634616138
 GameObject:
   m_ObjectHideFlags: 0
@@ -41513,7 +41478,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037669409965}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037670146859
 GameObject:
   m_ObjectHideFlags: 0
@@ -41733,7 +41697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Closetopenandclose: {fileID: 808951037671042580}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037671042580
 Animator:
   serializedVersion: 7
@@ -42488,7 +42451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037689314648}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037689749686
 GameObject:
   m_ObjectHideFlags: 0
@@ -43619,7 +43581,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037729970921}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037730862033
 GameObject:
   m_ObjectHideFlags: 0
@@ -43883,7 +43844,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951037733539543}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037755400505
 GameObject:
   m_ObjectHideFlags: 0
@@ -44179,7 +44139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037766818779}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037767016163
 GameObject:
   m_ObjectHideFlags: 0
@@ -44443,7 +44402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037768369809}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037773107839
 GameObject:
   m_ObjectHideFlags: 0
@@ -46229,7 +46187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Closetopenandclose: {fileID: 808951037824671197}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037824671197
 Animator:
   serializedVersion: 7
@@ -47615,7 +47572,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037849997370}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037857384313
 GameObject:
   m_ObjectHideFlags: 0
@@ -49162,7 +49118,7 @@ GameObject:
   - component: {fileID: 808951037914919513}
   - component: {fileID: 808951037914919514}
   - component: {fileID: 808951037914919515}
-  - component: {fileID: 808951037914919508}
+  - component: {fileID: 5811253640684745559}
   m_Layer: 0
   m_Name: ClosetDoor_Base
   m_TagString: Untagged
@@ -49264,7 +49220,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06565454, y: 2.8244824, z: 0.70461285}
   m_Center: {x: 0.029670998, y: 0.055483937, z: 0.34915048}
---- !u!114 &808951037914919508
+--- !u!114 &5811253640684745559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49273,12 +49229,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 808951037914919510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 469e00e876fb40142af620db2b198643, type: 3}
+  m_Script: {fileID: 11500000, guid: 072c4248094b5a3409f02ca9e3cd7fb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Closetopenandclose: {fileID: 808951038041388751}
-  open: 0
-  Player: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ClosetDoorChild
 --- !u!1 &808951037918427343
 GameObject:
   m_ObjectHideFlags: 0
@@ -49790,7 +49743,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037942272725}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951037942272725
 Animator:
   serializedVersion: 7
@@ -49905,7 +49857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951037945062259}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037946213488
 GameObject:
   m_ObjectHideFlags: 0
@@ -50372,7 +50323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037950962512}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037952213136
 GameObject:
   m_ObjectHideFlags: 0
@@ -51041,7 +50991,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037972325261}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037972944300
 GameObject:
   m_ObjectHideFlags: 0
@@ -51806,7 +51755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951037991504840}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951037998091146
 GameObject:
   m_ObjectHideFlags: 0
@@ -52567,7 +52515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951038010299898}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038020361472
 GameObject:
   m_ObjectHideFlags: 0
@@ -52930,7 +52877,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951038027733366}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951038027733366
 Animator:
   serializedVersion: 7
@@ -53351,7 +53297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Closetopenandclose: {fileID: 808951038041388751}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951038041388751
 Animator:
   serializedVersion: 7
@@ -54221,7 +54166,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951038063968654}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951038063968654
 Animator:
   serializedVersion: 7
@@ -55514,7 +55458,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951038093100445}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951038093100445
 Animator:
   serializedVersion: 7
@@ -55890,7 +55833,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951038098483008}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038102630740
 GameObject:
   m_ObjectHideFlags: 0
@@ -56952,7 +56894,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951038132853422}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038132983203
 GameObject:
   m_ObjectHideFlags: 0
@@ -60751,7 +60692,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose1: {fileID: 808951038223870259}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038227056932
 GameObject:
   m_ObjectHideFlags: 0
@@ -61933,7 +61873,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951038249611989}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038250999617
 GameObject:
   m_ObjectHideFlags: 0
@@ -62826,7 +62765,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951038270485746}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038276065597
 GameObject:
   m_ObjectHideFlags: 0
@@ -63160,7 +63098,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951038280784756}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038280962319
 GameObject:
   m_ObjectHideFlags: 0
@@ -65272,7 +65209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951038347542635}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038348913526
 GameObject:
   m_ObjectHideFlags: 0
@@ -66992,7 +66928,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclose: {fileID: 808951038384555885}
   open: 0
-  Player: {fileID: 0}
 --- !u!1 &808951038384906114
 GameObject:
   m_ObjectHideFlags: 0
@@ -68157,7 +68092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openandclosewindow: {fileID: 808951038422670984}
   open: 0
-  Player: {fileID: 0}
 --- !u!65 &808951038422670986
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68382,7 +68316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull_01: {fileID: 808951038425565746}
   open: 0
-  Player: {fileID: 0}
 --- !u!95 &808951038425565746
 Animator:
   serializedVersion: 7

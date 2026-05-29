@@ -5,18 +5,22 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class ClosetopencloseDoor : MonoBehaviour
+	public class ClosetopencloseDoor : MonoBehaviour, IDoor
 	{
-
 		public Animator Closetopenandclose;
 		public bool open;
 
-        void Start()
+        private void Awake()
+        {
+            
+        }
+
+        private void Start()
 		{
 			open = false;
 		}
 
-		void OnMouseOver()
+        public void OnMouseOver()
 		{
 			{
 				if (Player.instance)
@@ -50,9 +54,13 @@ namespace SojaExiles
 
 		}
 
+		public bool IsOpen()
+		{
+			return open;
+		}
+
 		IEnumerator opening()
 		{
-			print("you are opening the door");
 			Closetopenandclose.Play("ClosetOpening");
 			open = true;
 			yield return new WaitForSeconds(.5f);
@@ -60,7 +68,6 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing the door");
 			Closetopenandclose.Play("ClosetClosing");
 			open = false;
 			yield return new WaitForSeconds(.5f);

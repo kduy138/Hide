@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
         GameInput.instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
+    private void Update()
+    {
+        Debug.Log("Player is hinding: " + isHiding);
+    }
+
     private void FixedUpdate()
     {
         HandlePlayerMovement();

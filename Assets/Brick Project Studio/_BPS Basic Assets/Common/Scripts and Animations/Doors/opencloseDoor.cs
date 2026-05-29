@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseDoor : MonoBehaviour
+	public class opencloseDoor : MonoBehaviour, IDoor
 	{
 
 		public Animator openandclose;
@@ -16,7 +16,7 @@ namespace SojaExiles
 			open = false;
 		}
 
-		void OnMouseOver()
+		public void OnMouseOver()
 		{
 			{
 				if (Player.instance)
@@ -48,6 +48,11 @@ namespace SojaExiles
 
 			}
 
+		}
+
+		public bool IsOpen()
+		{
+			return open;
 		}
 
 		IEnumerator opening()

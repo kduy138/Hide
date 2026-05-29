@@ -5,24 +5,23 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseSlide : MonoBehaviour
+	public class opencloseSlide : MonoBehaviour, IDoor
 	{
 
 		public Animator openandclosewindow;
 		public bool open;
-		public Transform Player;
 
 		void Start()
 		{
 			open = false;
 		}
 
-		void OnMouseOver()
+		public void OnMouseOver()
 		{
 			{
-				if (Player)
+				if (Player.instance)
 				{
-					float dist = Vector3.Distance(Player.position, transform.position);
+					float dist = Vector3.Distance(Player.instance.transform.position, transform.position);
 					if (dist < 15)
 					{
 						if (open == false)
@@ -49,6 +48,11 @@ namespace SojaExiles
 
 			}
 
+		}
+
+		public bool IsOpen()
+		{
+			return open;
 		}
 
 		IEnumerator opening()
