@@ -10,11 +10,6 @@ namespace SojaExiles
 		public Animator Closetopenandclose;
 		public bool open;
 
-        private void Awake()
-        {
-            
-        }
-
         private void Start()
 		{
 			open = false;

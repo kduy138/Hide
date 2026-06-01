@@ -8,7 +8,8 @@ namespace SojaExiles
 	public class opencloseDoor : MonoBehaviour, IDoor
 	{
 
-		public Animator openandclose;
+		public Animator openandclose_leftdoor;
+		public Animator openandclose_rightdoor;
 		public bool open;
 
 		void Start()
@@ -57,17 +58,17 @@ namespace SojaExiles
 
 		IEnumerator opening()
 		{
-			print("you are opening the door");
-			openandclose.Play("Opening");
+			openandclose_leftdoor.Play("Opening");
+			openandclose_rightdoor.Play("Opening 1");
 			open = true;
 			yield return new WaitForSeconds(.5f);
 		}
 
 		IEnumerator closing()
 		{
-			print("you are closing the door");
-			openandclose.Play("Closing");
-			open = false;
+            openandclose_leftdoor.Play("Closing");
+			openandclose_rightdoor.Play("Closing 1");
+            open = false;
 			yield return new WaitForSeconds(.5f);
 		}
 
