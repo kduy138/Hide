@@ -28,7 +28,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool isCrouching = false;
     [SerializeField]
-    private bool isHiding = false;
+    private bool canBeDetected = true;
+    [SerializeField]
+    private bool inHidingSpot = false;
     [SerializeField]
     private bool hasPhone = false;
 
@@ -48,7 +50,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Player is hinding: " + isHiding);
+        if (inHidingSpot)
+        {
+            canBeDetected = isMoving ? true : false;
+        }
+        else
+        {
+            canBeDetected = true;
+        }
     }
 
     private void FixedUpdate()
@@ -149,9 +158,9 @@ public class Player : MonoBehaviour
         hasPhone = value;
     }
 
-    public void SetPlayerIsHiding(bool value)
+    public void SetPlayerInHidingSpot(bool value)
     {
-        isHiding = value;
+        inHidingSpot = value;
     }
 
     public bool HasPhone()
@@ -171,6 +180,6 @@ public class Player : MonoBehaviour
 
     public bool IsHiding()
     {
-        return isHiding;
+        return canBeDetected;
     }
 }

@@ -18,7 +18,7 @@ public class HidingSpot : MonoBehaviour
     {
         if (playerInside == null) return;
 
-        playerInside.SetPlayerIsHiding(!door.IsOpen());
+        playerInside.SetPlayerInHidingSpot(!door.IsOpen());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +38,7 @@ public class HidingSpot : MonoBehaviour
         {
             if (player != null)
             {
-                playerInside.SetPlayerIsHiding(false);
+                playerInside.SetPlayerInHidingSpot(false);
                 playerInside = null;
             }
         }
