@@ -1,7 +1,7 @@
 using SojaExiles;
 using UnityEngine;
 
-public class ClosetDoorChild : MonoBehaviour
+public class ClosetDoorChild : MonoBehaviour, IDoor
 {
     private ClosetopencloseDoor parentDoor;
 
@@ -10,8 +10,13 @@ public class ClosetDoorChild : MonoBehaviour
         parentDoor = GetComponentInParent<ClosetopencloseDoor>();
     }
 
-    private void OnMouseOver()
+    public void Interact()
     {
-        parentDoor.OnMouseOver();
+        parentDoor.Interact();
+    }
+
+    public bool IsOpen()
+    {
+        return parentDoor.IsOpen();
     }
 }

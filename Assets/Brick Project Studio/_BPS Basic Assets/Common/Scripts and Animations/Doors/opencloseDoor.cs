@@ -17,7 +17,7 @@ namespace SojaExiles
 			open = false;
 		}
 
-		public void OnMouseOver()
+		public void Interact()
 		{
 			{
 				if (Player.instance)
@@ -25,23 +25,13 @@ namespace SojaExiles
 					float dist = Vector3.Distance(Player.instance.transform.position, transform.position);
 					if (dist < 15)
 					{
-						if (open == false)
+						if (!open)
 						{
-							if (Input.GetMouseButtonDown(0))
-							{
-								StartCoroutine(opening());
-							}
+							StartCoroutine(opening());
 						}
 						else
 						{
-							if (open == true)
-							{
-								if (Input.GetMouseButtonDown(0))
-								{
-									StartCoroutine(closing());
-								}
-							}
-
+							StartCoroutine(closing());
 						}
 
 					}

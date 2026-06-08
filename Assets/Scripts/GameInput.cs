@@ -8,6 +8,7 @@ public class GameInput : MonoBehaviour
 
     public event EventHandler OnCrouchAction;
     public event EventHandler OnInteractAction;
+    public event EventHandler OnOpenClose;
 
     private Player_InputActions playerInputActions;
 
@@ -21,13 +22,22 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Crouch.performed += Crouch_performed;
         playerInputActions.Player.Interact.performed += Interact_performed;
+        playerInputActions.Player.OpenClose.performed += OpenClose_performed;
     }
+
 
     private void OnDestroy()
     {
         playerInputActions.Player.Crouch.performed -= Crouch_performed;
+        playerInputActions.Player.Interact.performed -= Interact_performed;
+        playerInputActions.Player.OpenClose.performed -= OpenClose_performed;
 
         playerInputActions.Dispose();
+    }
+
+    private void OpenClose_performed(InputAction.CallbackContext obj)
+    {
+        OnOpenClose?.Invoke(this, EventArgs.Empty);
     }
 
     private void Crouch_performed(InputAction.CallbackContext context)

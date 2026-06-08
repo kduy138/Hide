@@ -1,6 +1,6 @@
 
 public interface IDoor
 {
-    void OnMouseOver();
+    void Interact();
     bool IsOpen();
 }

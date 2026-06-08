@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     private State state;
     private Challenge challenge;
 
+    [Header("Stats")]
+    private float gameTime = 68400f;
+
     private void Awake()
     {
         instance = this;
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
         switch(state)
         {
             case State.GamePlaying:
+                gameTime += Time.deltaTime;
                 break;
             case State.GameOver:
                 break;
@@ -70,5 +74,15 @@ public class GameManager : MonoBehaviour
     public bool IsGamePlaying()
     {
         return state == State.GamePlaying;
+    }
+
+    public string GetFormattedTime()
+    {
+        int totalSeconds = Mathf.FloorToInt(gameTime);
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+
+        return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
     }
 }

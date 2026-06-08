@@ -46,6 +46,14 @@ public class Player : MonoBehaviour
     {
         GameInput.instance.OnCrouchAction += GameInput_OnCrouchAction;
         GameInput.instance.OnInteractAction += GameInput_OnInteractAction;
+        GameInput.instance.OnOpenClose += GameInput_OnOpenClose;
+    }
+
+    private void OnDisable()
+    {
+        GameInput.instance.OnCrouchAction -= GameInput_OnCrouchAction;
+        GameInput.instance.OnInteractAction -= GameInput_OnInteractAction;
+        GameInput.instance.OnOpenClose -= GameInput_OnOpenClose;
     }
 
     private void Update()
@@ -70,6 +78,12 @@ public class Player : MonoBehaviour
         isCrouching = !isCrouching;
     }
 
+    private void GameInput_OnOpenClose(object sender, EventArgs e)
+    {
+        Debug.Log("Interacted!");
+        HandleInteraction();
+    }
+
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         Debug.Log("Interacted!");
@@ -83,12 +97,19 @@ public class Player : MonoBehaviour
         float horizontalInput = inputVector.x;
         float verticalInput = inputVector.y;
 
-        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactDistance))
         {
             if (hit.transform.TryGetComponent(out Phone phone)) {
-                Debug.Log("Hit phone: " + hit.transform.gameObject.name);
                 phone.Interact();
                 OnPlayerHasPhone?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitDoor, interactDistance))
+        {
+            if (hitDoor.transform.TryGetComponent(out IDoor door))
+            {
+                door.Interact();
             }
         }
     }

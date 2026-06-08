@@ -1,14 +1,19 @@
 using SojaExiles;
 using UnityEngine;
 
-public class opencloseDoorChild : MonoBehaviour
+public class opencloseDoorChild : MonoBehaviour, IDoor
 {
     [SerializeField]
     private opencloseDoor parentDoor;
 
-    private void OnMouseOver()
+    public void Interact()
     {
-        parentDoor.OnMouseOver();
+        parentDoor.Interact();
+    }
+
+    public bool IsOpen()
+    {
+        return parentDoor.IsOpen();
     }
 }
 
