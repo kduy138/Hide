@@ -36,7 +36,14 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -49,7 +56,7 @@ public class Player : MonoBehaviour
         GameInput.instance.OnOpenClose += GameInput_OnOpenClose;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameInput.instance.OnCrouchAction -= GameInput_OnCrouchAction;
         GameInput.instance.OnInteractAction -= GameInput_OnInteractAction;

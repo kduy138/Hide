@@ -9,12 +9,20 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnCrouchAction;
     public event EventHandler OnInteractAction;
     public event EventHandler OnOpenClose;
+    public event EventHandler OnDialogue;
 
     private Player_InputActions playerInputActions;
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         playerInputActions = new Player_InputActions();
 
@@ -23,16 +31,22 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Crouch.performed += Crouch_performed;
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.OpenClose.performed += OpenClose_performed;
+        playerInputActions.Player.Dialogue.performed += Dialogue_performed;
     }
-
 
     private void OnDestroy()
     {
         playerInputActions.Player.Crouch.performed -= Crouch_performed;
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.OpenClose.performed -= OpenClose_performed;
+        playerInputActions.Player.Dialogue.performed -= Dialogue_performed;
 
         playerInputActions.Dispose();
+    }
+
+    private void Dialogue_performed(InputAction.CallbackContext obj)
+    {
+        OnDialogue?.Invoke(this, EventArgs.Empty);
     }
 
     private void OpenClose_performed(InputAction.CallbackContext obj)
