@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
+    public static Player instance { get; private set; }
 
     public event EventHandler OnPlayerHasPhone;
+    public event EventHandler OnPlayerEnterHidingSpot;
+    public event EventHandler OnPlayerExitHidingSpot;
 
     [Header("References")]
     [SerializeField]
@@ -15,6 +17,8 @@ public class Player : MonoBehaviour
     private LayerMask layerMask;
 
     [Header("Settings")]
+    [SerializeField]
+    private string playerName;
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
@@ -87,13 +91,11 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnOpenClose(object sender, EventArgs e)
     {
-        Debug.Log("Interacted!");
         HandleInteraction();
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        Debug.Log("Interacted!");
         HandleInteraction();
     }
 
@@ -189,6 +191,15 @@ public class Player : MonoBehaviour
     public void SetPlayerInHidingSpot(bool value)
     {
         inHidingSpot = value;
+
+        if (value == true)
+        {
+            OnPlayerEnterHidingSpot?.Invoke(this, EventArgs.Empty);
+        }
+        else
+        {
+            OnPlayerExitHidingSpot?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public bool HasPhone()
@@ -206,8 +217,18 @@ public class Player : MonoBehaviour
         return isCrouching;
     }
 
-    public bool IsHiding()
+    public bool IsInHidingSpot()
+    {
+        return inHidingSpot;
+    }
+
+    public bool CanBeDetected()
     {
         return canBeDetected;
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 }

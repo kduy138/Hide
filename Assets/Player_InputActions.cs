@@ -145,6 +145,15 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopMarker"",
+                    ""type"": ""Button"",
+                    ""id"": ""6956fe3f-5361-49d6-803f-1419e9d2bb55"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -323,6 +332,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c3b15c5-380f-49a7-9623-537117c72729"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StopMarker"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -337,6 +357,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_OpenClose = m_Player.FindAction("OpenClose", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
+        m_Player_StopMarker = m_Player.FindAction("StopMarker", throwIfNotFound: true);
     }
 
     ~@Player_InputActions()
@@ -423,6 +444,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_OpenClose;
     private readonly InputAction m_Player_Dialogue;
+    private readonly InputAction m_Player_StopMarker;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -458,6 +480,10 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Dialogue".
         /// </summary>
         public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/StopMarker".
+        /// </summary>
+        public InputAction @StopMarker => m_Wrapper.m_Player_StopMarker;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -502,6 +528,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Dialogue.started += instance.OnDialogue;
             @Dialogue.performed += instance.OnDialogue;
             @Dialogue.canceled += instance.OnDialogue;
+            @StopMarker.started += instance.OnStopMarker;
+            @StopMarker.performed += instance.OnStopMarker;
+            @StopMarker.canceled += instance.OnStopMarker;
         }
 
         /// <summary>
@@ -531,6 +560,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @Dialogue.started -= instance.OnDialogue;
             @Dialogue.performed -= instance.OnDialogue;
             @Dialogue.canceled -= instance.OnDialogue;
+            @StopMarker.started -= instance.OnStopMarker;
+            @StopMarker.performed -= instance.OnStopMarker;
+            @StopMarker.canceled -= instance.OnStopMarker;
         }
 
         /// <summary>
@@ -613,5 +645,12 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDialogue(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "StopMarker" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnStopMarker(InputAction.CallbackContext context);
     }
 }

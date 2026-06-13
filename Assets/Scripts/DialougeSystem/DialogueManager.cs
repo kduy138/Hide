@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager instance;
+    public static DialogueManager instance { get; private set; }
 
     public event EventHandler OnDialogueStarted;
+    public event EventHandler OnDialogueEnded;
 
     [Header("References")]
     [SerializeField]
@@ -55,9 +56,40 @@ public class DialogueManager : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        GameInput.instance.OnDialogue -= GameInput_OnDialogue;
+    }
+
     private void GameInput_OnDialogue(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        if (justStarted)
+        {
+            justStarted = false;
+        }
+
+        if (isTyping)
+        {
+            StopCoroutine(typingCoroutine);
+            ShowEntireDialogue(dialogueLines[currentIndex]);
+            isTyping = false;
+        }
+        else
+        {
+            currentIndex++;
+
+            if (currentIndex < dialogueLines.Length)
+            {
+                typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentIndex]));
+            }
+            else
+            {
+                dialogueTxt.text = "";
+                speakerNameTxt.text = "";
+                isDialogueFinished = true;
+                OnDialogueEnded?.Invoke(this, EventArgs.Empty);
+            }
+        }
     }
 
     public void StartDialogue(DialogueLine[] newDialogueLines)
@@ -75,7 +107,7 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
 
         dialogueTxt.text = "";
-        speakerNameTxt.text = dialogueLine.speakerName;
+        speakerNameTxt.text = dialogueLine.GetSpeakerName();
 
         foreach (char c in dialogueLine.dialougeTxt)
         {
@@ -88,6 +120,11 @@ public class DialogueManager : MonoBehaviour
     private void ShowEntireDialogue(DialogueLine dialogueLine)
     {
         dialogueTxt.text = dialogueLine.dialougeTxt;
-        speakerNameTxt.text = dialogueLine.speakerName;
+        speakerNameTxt.text = dialogueLine.GetSpeakerName();
+    }
+
+    public bool IsDialogueFinished()
+    {
+        return isDialogueFinished;
     }
 }

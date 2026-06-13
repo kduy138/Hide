@@ -4,12 +4,13 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    public static GameInput instance;
+    public static GameInput instance { get; private set; }
 
     public event EventHandler OnCrouchAction;
     public event EventHandler OnInteractAction;
     public event EventHandler OnOpenClose;
     public event EventHandler OnDialogue;
+    public event EventHandler OnStopMarker;
 
     private Player_InputActions playerInputActions;
 
@@ -32,6 +33,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.OpenClose.performed += OpenClose_performed;
         playerInputActions.Player.Dialogue.performed += Dialogue_performed;
+        playerInputActions.Player.StopMarker.performed += StopMarker_performed;
     }
 
     private void OnDestroy()
@@ -40,8 +42,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.OpenClose.performed -= OpenClose_performed;
         playerInputActions.Player.Dialogue.performed -= Dialogue_performed;
+        playerInputActions.Player.StopMarker.performed -= StopMarker_performed;
 
         playerInputActions.Dispose();
+    }
+
+    private void StopMarker_performed(InputAction.CallbackContext obj)
+    {
+        OnStopMarker?.Invoke(this, EventArgs.Empty);
     }
 
     private void Dialogue_performed(InputAction.CallbackContext obj)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance { get; private set; }
 
     public event EventHandler OnStateChanged;
     public event EventHandler OnChallengeChanged;
@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
             case Challenge.PointToSacrifice:
                 break;
         }
+
+        //Debug.Log(challenge);
     }
 
     public bool IsGamePlaying()
