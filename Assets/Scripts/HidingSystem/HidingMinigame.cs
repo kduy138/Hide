@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 public class HidingMinigame : MonoBehaviour
 {
     public static HidingMinigame instance { get; private set; }
+
+    public event EventHandler OnMinigameSuccess;
+    public event EventHandler OnMinigameFail;
 
     [Header("References")]
     [SerializeField]
@@ -18,7 +22,7 @@ public class HidingMinigame : MonoBehaviour
     private float trackAreaWidth = 500f;
     private float successZoneWidth = 70f;
     private int maxRound = 5;
-    private int currentRound = 1;
+    private int currentRound = 0;
     private int failedCount = 0;
 
     [Header("States")]
@@ -41,12 +45,6 @@ public class HidingMinigame : MonoBehaviour
         GameInput.instance.OnStopMarker += GameInput_OnStopMarker;
     }
 
-    private void OnEnable()
-    {
-        isMarkerStopped = false;
-        SuccessZonePosRandomizer();
-    }
-
     private void Update()
     {
         if (!Player.instance.IsInHidingSpot()) return;
@@ -55,29 +53,43 @@ public class HidingMinigame : MonoBehaviour
 
         if (failedCount >= 2)
         {
-            Debug.Log("Game Over!");
+            //Debug.Log("Game Over!");
         }
 
         if (currentRound >= maxRound)
         {
-            Debug.Log("You Win!");
+            //Debug.Log("You Win!");
         }
     }
 
     private void GameInput_OnStopMarker(object sender, System.EventArgs e)
     {
-        StopMarker();
+        Debug.Log("1. OnStopMarker called. IsInHidingSpot=" + Player.instance.IsInHidingSpot() + " isMarkerStopped=" + isMarkerStopped);
+        if (!Player.instance.IsInHidingSpot()) return;
+        if (isMarkerStopped) return;
 
-        if (!isMarkerStopped) return;
+        StopMarker();
+        Debug.Log("2. Marker stopped: " + isMarkerStopped);
 
         if (IsMarkerInSuccessZone())
         {
+            Debug.Log("3. SUCCESS");
             currentRound++;
+            OnMinigameSuccess?.Invoke(this, EventArgs.Empty);
         }
         else
         {
+            Debug.Log("3. FAIL");
             failedCount++;
+            OnMinigameFail?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    public void ResumeMinigame()
+    {
+        Debug.Log("4. ResumeMinigame called");
+        isMarkerStopped = false;
+        SuccessZonePosRandomizer();
     }
 
     private void MoveMarker()
@@ -144,7 +156,7 @@ public class HidingMinigame : MonoBehaviour
         float minX = -trackAreaWidth / 2f + successZoneWidth / 2f;
         float maxX = trackAreaWidth / 2f - successZoneWidth / 2f;
 
-        float randomX = Random.Range(minX, maxX);
+        float randomX = UnityEngine.Random.Range(minX, maxX);
 
         successZoneRect.anchoredPosition = new Vector2(randomX, successZoneRect.anchoredPosition.y);
     }
