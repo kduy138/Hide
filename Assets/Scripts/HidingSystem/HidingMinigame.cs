@@ -53,33 +53,29 @@ public class HidingMinigame : MonoBehaviour
 
         if (failedCount >= 2)
         {
-            //Debug.Log("Game Over!");
+            Debug.Log("Game Over!");
         }
 
         if (currentRound >= maxRound)
         {
-            //Debug.Log("You Win!");
+            Debug.Log("You Win!");
         }
     }
 
     private void GameInput_OnStopMarker(object sender, System.EventArgs e)
     {
-        Debug.Log("1. OnStopMarker called. IsInHidingSpot=" + Player.instance.IsInHidingSpot() + " isMarkerStopped=" + isMarkerStopped);
         if (!Player.instance.IsInHidingSpot()) return;
         if (isMarkerStopped) return;
 
         StopMarker();
-        Debug.Log("2. Marker stopped: " + isMarkerStopped);
 
         if (IsMarkerInSuccessZone())
         {
-            Debug.Log("3. SUCCESS");
             currentRound++;
             OnMinigameSuccess?.Invoke(this, EventArgs.Empty);
         }
         else
         {
-            Debug.Log("3. FAIL");
             failedCount++;
             OnMinigameFail?.Invoke(this, EventArgs.Empty);
         }
@@ -87,7 +83,6 @@ public class HidingMinigame : MonoBehaviour
 
     public void ResumeMinigame()
     {
-        Debug.Log("4. ResumeMinigame called");
         isMarkerStopped = false;
         SuccessZonePosRandomizer();
     }

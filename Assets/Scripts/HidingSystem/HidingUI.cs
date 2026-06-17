@@ -1,68 +1,79 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HidingUI : MonoBehaviour
 {
     [Header("Settings")]
-    private float waitingTimeMax = 2f;
-    private float currentWaitingTime = 0f;
+    private float waitingToShowTimeMax = 2f;
+    private float currentWaitingToShowTime = 0f;
     private bool isWaitingToShow = false;
 
     [Header("References")]
     [SerializeField]
     private GameObject hidingMinigameUI;
+    [SerializeField]
+    private GameObject hidingMinigameFailedUI;
 
     private void Start()
     {
-        Player.instance.OnPlayerEnterHidingSpot += Player_OnPlayerInHidingSpot;
         Player.instance.OnPlayerExitHidingSpot += Player_OnPlayerExitHidingSpot;
         HidingMinigame.instance.OnMinigameSuccess += HidingMinigame_OnMinigameSuccessOrFail;
         HidingMinigame.instance.OnMinigameFail += HidingMinigame_OnMinigameSuccessOrFail;
+        GameManager.instance.OnHidingMinigameStarted += GameManager_OnMinigameStarted;
 
-        Hide();
+        HideMinigameUI();
     }
 
     private void Update()
     {
         if (!isWaitingToShow) return;
 
-        currentWaitingTime -= Time.deltaTime;
+        currentWaitingToShowTime -= Time.deltaTime;
 
-        if (currentWaitingTime <= 0f)
+        if (currentWaitingToShowTime <= 0f)
         {
-            Debug.Log("B. Cooldown done, resuming + showing");
             isWaitingToShow = false;
             HidingMinigame.instance.ResumeMinigame();
-            Show();
+            ShowMinigameUI();
         }
+    }
+
+    private void GameManager_OnMinigameStarted(object sender, System.EventArgs e)
+    {
+        ShowMinigameUI();
     }
 
     private void HidingMinigame_OnMinigameSuccessOrFail(object sender, System.EventArgs e)
     {
-        Debug.Log("A. Minigame result received, hiding UI");
-        Hide();
-        currentWaitingTime = waitingTimeMax;
+        HideMinigameUI();
+        currentWaitingToShowTime = waitingToShowTimeMax;
         isWaitingToShow = true;
-    }
-
-    private void Player_OnPlayerInHidingSpot(object sender, System.EventArgs e)
-    {
-        Show();
     }
 
     private void Player_OnPlayerExitHidingSpot(object sender, System.EventArgs e)
     {
         isWaitingToShow = false;
-        Hide();
+        HideMinigameUI();
     }
 
-    private void Show()
+    private void ShowMinigameUI()
     {
         hidingMinigameUI.SetActive(true);
     }
 
-    private void Hide()
+    private void HideMinigameUI()
     {
         hidingMinigameUI.SetActive(false);
+    }
+
+    private void ShowMinigameFailedUI()
+    {
+        hidingMinigameFailedUI.SetActive(true);
+    }
+
+    private void HideMinigameFailedUI()
+    {
+        hidingMinigameFailedUI.SetActive(false);
     }
 }

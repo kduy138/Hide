@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler OnStateChanged;
     public event EventHandler OnChallengeChanged;
+    public event EventHandler OnHidingMinigameStarted;
 
     public enum State
     {
@@ -28,8 +29,10 @@ public class GameManager : MonoBehaviour
     private State state;
     private Challenge challenge;
 
-    [Header("Stats")]
+    [Header("Settings")]
     private float gameTime = 68400f;
+    private float waitingToStartTimeMax = 5f;
+    private float currentWaitingToStartTime = 0f;
 
     private void Awake()
     {
@@ -60,12 +63,25 @@ public class GameManager : MonoBehaviour
         switch(challenge)
         {
             case Challenge.None:
-                challenge = Challenge.Hide;
-                OnChallengeChanged?.Invoke(this, EventArgs.Empty);
+                if (Player.instance.IsInHidingSpot())
+                {
+                    challenge = Challenge.Hide;
+                    currentWaitingToStartTime = waitingToStartTimeMax;
+                    OnChallengeChanged?.Invoke(this, EventArgs.Empty);
+                }
                 break;
             case Challenge.Hide:
+                currentWaitingToStartTime -= Time.deltaTime;
+
+                if (currentWaitingToStartTime <= 0f)
+                {
+                    OnHidingMinigameStarted?.Invoke(this, EventArgs.Empty);
+                    challenge = Challenge.OneMoreTime;
+                    OnChallengeChanged?.Invoke(this, EventArgs.Empty);
+                }
                 break;
             case Challenge.OneMoreTime:
+                
                 break;
             case Challenge.BreakTime:
                 break;
@@ -76,8 +92,6 @@ public class GameManager : MonoBehaviour
             case Challenge.PointToSacrifice:
                 break;
         }
-
-        //Debug.Log(challenge);
     }
 
     public bool IsGamePlaying()

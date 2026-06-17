@@ -190,6 +190,8 @@ public class Player : MonoBehaviour
 
     public void SetPlayerInHidingSpot(bool value)
     {
+        if (inHidingSpot == value) return;
+
         inHidingSpot = value;
 
         if (value == true)
