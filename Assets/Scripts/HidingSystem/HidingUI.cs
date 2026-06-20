@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HidingUI : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class HidingUI : MonoBehaviour
     private GameObject hidingMinigameUI;
     [SerializeField]
     private GameObject hidingMinigameFailedUI;
+    [SerializeField]
+    private Image timeBar;
+    [SerializeField]
+    private Button tryAgainBtn;
+    [SerializeField]
+    private Button mainMenuBtn;
 
     private void Start()
     {
@@ -21,12 +28,25 @@ public class HidingUI : MonoBehaviour
         HidingMinigame.instance.OnMinigameSuccess += HidingMinigame_OnMinigameSuccessOrFail;
         HidingMinigame.instance.OnMinigameFail += HidingMinigame_OnMinigameSuccessOrFail;
         GameManager.instance.OnHidingMinigameStarted += GameManager_OnMinigameStarted;
+        HidingMinigame.instance.OnMinigameLose += HidingMinigame_OnMinigameLose;
+
+        tryAgainBtn.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.GameScene);
+        });
+        mainMenuBtn.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MenuScene);
+        });
 
         HideMinigameUI();
+        HideMinigameFailedUI();
     }
 
     private void Update()
     {
+        UpdateTimerBar();
+
         if (!isWaitingToShow) return;
 
         currentWaitingToShowTime -= Time.deltaTime;
@@ -39,9 +59,26 @@ public class HidingUI : MonoBehaviour
         }
     }
 
+    private void UpdateTimerBar()
+    {
+        timeBar.fillAmount = HidingMinigame.instance.TimeBarFillAmount();
+
+        if (HidingMinigame.instance.GetCurrentMinigameTime() <= 0)
+        {
+            timeBar.fillAmount = 0f;
+        }
+    }
+
+    private void HidingMinigame_OnMinigameLose(object sender, System.EventArgs e)
+    {
+        ShowMinigameFailedUI();
+        HideMinigameUI();
+    }
+
     private void GameManager_OnMinigameStarted(object sender, System.EventArgs e)
     {
         ShowMinigameUI();
+        HidingMinigame.instance.StartTimer();
     }
 
     private void HidingMinigame_OnMinigameSuccessOrFail(object sender, System.EventArgs e)

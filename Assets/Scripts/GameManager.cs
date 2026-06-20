@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     private float gameTime = 68400f;
-    private float waitingToStartTimeMax = 5f;
-    private float currentWaitingToStartTime = 0f;
+    private float waitingToStartMinigameTimeMax = 5f;
+    private float currentWaitingToStartMinigameTime = 0f;
 
     private void Awake()
     {
@@ -54,26 +54,25 @@ public class GameManager : MonoBehaviour
         switch(state)
         {
             case State.GamePlaying:
+                Time.timeScale = 1f;
                 gameTime += Time.deltaTime;
                 break;
             case State.GameOver:
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 break;
         }
 
         switch(challenge)
         {
             case Challenge.None:
-                if (Player.instance.IsInHidingSpot())
-                {
-                    challenge = Challenge.Hide;
-                    currentWaitingToStartTime = waitingToStartTimeMax;
-                    OnChallengeChanged?.Invoke(this, EventArgs.Empty);
-                }
+                currentWaitingToStartMinigameTime = waitingToStartMinigameTimeMax;
                 break;
             case Challenge.Hide:
-                currentWaitingToStartTime -= Time.deltaTime;
+                currentWaitingToStartMinigameTime -= Time.deltaTime;
 
-                if (currentWaitingToStartTime <= 0f)
+                if (currentWaitingToStartMinigameTime <= 0f)
                 {
                     OnHidingMinigameStarted?.Invoke(this, EventArgs.Empty);
                     challenge = Challenge.OneMoreTime;
@@ -107,5 +106,25 @@ public class GameManager : MonoBehaviour
         int seconds = totalSeconds % 60;
 
         return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+    }
+
+    public void SetGameState(State value)
+    {
+        state = value;
+    }
+
+    public State GetCurrentState()
+    {
+        return state;
+    }
+
+    public void SetGameChallenge(Challenge value)
+    {
+        challenge = value;
+    }
+
+    public Challenge GetCurrentChallenge()
+    {
+        return challenge;
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class HidingMinigame : MonoBehaviour
@@ -7,6 +7,7 @@ public class HidingMinigame : MonoBehaviour
 
     public event EventHandler OnMinigameSuccess;
     public event EventHandler OnMinigameFail;
+    public event EventHandler OnMinigameLose;
 
     [Header("References")]
     [SerializeField]
@@ -22,8 +23,13 @@ public class HidingMinigame : MonoBehaviour
     private float trackAreaWidth = 500f;
     private float successZoneWidth = 70f;
     private int maxRound = 5;
+    [SerializeField]
     private int currentRound = 0;
+    [SerializeField]
     private int failedCount = 0;
+    private float minigameDuration = 5f;
+    private float currentMinigameTime = 0f;
+    private float timeBarFillAmount = 0f;
 
     [Header("States")]
     private bool isMarkerStopped;
@@ -47,18 +53,19 @@ public class HidingMinigame : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.GetCurrentState() == GameManager.State.GameOver) return;
         if (!Player.instance.IsInHidingSpot()) return;
 
         MoveMarker();
 
-        if (failedCount >= 2)
-        {
-            Debug.Log("Game Over!");
-        }
+        if (currentMinigameTime <= 0f) return;
 
-        if (currentRound >= maxRound)
+        currentMinigameTime -= Time.deltaTime;
+        timeBarFillAmount = currentMinigameTime / minigameDuration;
+
+        if (currentMinigameTime <= 0f)
         {
-            Debug.Log("You Win!");
+            currentMinigameTime = 0f;
         }
     }
 
@@ -73,18 +80,36 @@ public class HidingMinigame : MonoBehaviour
         {
             currentRound++;
             OnMinigameSuccess?.Invoke(this, EventArgs.Empty);
+
+            if (currentRound >= maxRound && failedCount < 2)
+            {
+                Debug.Log("You Win!");
+            }
         }
         else
         {
             failedCount++;
+            currentRound++;
             OnMinigameFail?.Invoke(this, EventArgs.Empty);
+
+            if (failedCount >= 2 && currentRound <= maxRound)
+            {
+                GameManager.instance.SetGameState(GameManager.State.GameOver);
+                OnMinigameLose?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 
     public void ResumeMinigame()
     {
         isMarkerStopped = false;
+        StartTimer();
         SuccessZonePosRandomizer();
+    }
+
+    public void StartTimer()
+    {
+        currentMinigameTime = minigameDuration;
     }
 
     private void MoveMarker()
@@ -154,5 +179,15 @@ public class HidingMinigame : MonoBehaviour
         float randomX = UnityEngine.Random.Range(minX, maxX);
 
         successZoneRect.anchoredPosition = new Vector2(randomX, successZoneRect.anchoredPosition.y);
+    }
+
+    public float TimeBarFillAmount()
+    {
+        return timeBarFillAmount;
+    }
+
+    public float GetCurrentMinigameTime()
+    {
+        return currentMinigameTime;
     }
 }

@@ -5,7 +5,7 @@ public class Loader : MonoBehaviour
 {
     public enum Scene
     {
-        MainMenuScene,
+        MenuScene,
         GameScene,
         LoadingScene,
     }

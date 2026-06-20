@@ -69,6 +69,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.GetCurrentState() == GameManager.State.GameOver) return;
+
         if (inHidingSpot)
         {
             canBeDetected = isMoving ? true : false;
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.instance.GetCurrentState() == GameManager.State.GameOver) return;
+
         HandlePlayerMovement();
     }
 
@@ -197,6 +201,7 @@ public class Player : MonoBehaviour
         if (value == true)
         {
             OnPlayerEnterHidingSpot?.Invoke(this, EventArgs.Empty);
+            GameManager.instance.SetGameChallenge(GameManager.Challenge.Hide);
         }
         else
         {
