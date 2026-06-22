@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnStateChanged;
     public event EventHandler OnChallengeChanged;
     public event EventHandler OnHidingMinigameStarted;
+    public event EventHandler OnPrologue;
 
     public enum State
     {
+        Prologue,
         GamePlaying,
         GameOver,
     }
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        state = State.GamePlaying;
+        state = State.Prologue;
         challenge = Challenge.None;
     }
 
@@ -53,9 +55,13 @@ public class GameManager : MonoBehaviour
     {
         switch(state)
         {
+            case State.Prologue:
+                OnPrologue?.Invoke(this, EventArgs.Empty);
+                break;
             case State.GamePlaying:
                 Time.timeScale = 1f;
                 gameTime += Time.deltaTime;
+
                 break;
             case State.GameOver:
                 Time.timeScale = 0f;
@@ -63,6 +69,7 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = true;
                 break;
         }
+        Debug.Log(state);
 
         switch(challenge)
         {

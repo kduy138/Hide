@@ -21,6 +21,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * cameraSensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * cameraSensY;
 
