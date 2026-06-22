@@ -61,7 +61,5 @@ namespace SojaExiles
             open = false;
 			yield return new WaitForSeconds(.5f);
 		}
-
-
 	}
 }
