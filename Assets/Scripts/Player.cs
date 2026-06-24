@@ -24,7 +24,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float crouchMoveSpeed;
     [SerializeField]
-    private float interactDistance;
+    private float doorInteractDistance;
+    [SerializeField]
+    private float phoneInteractDistance;
 
     [Header("Flags")]
     [SerializeField]
@@ -69,7 +71,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.GetCurrentState() == GameManager.State.GameOver) return;
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
 
         if (inHidingSpot)
         {
@@ -83,7 +85,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.instance.GetCurrentState() == GameManager.State.GameOver) return;
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
 
         HandlePlayerMovement();
     }
@@ -105,12 +107,14 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+
         Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
 
         float horizontalInput = inputVector.x;
         float verticalInput = inputVector.y;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, phoneInteractDistance))
         {
             if (hit.transform.TryGetComponent(out Phone phone)) {
                 phone.Interact();
@@ -118,7 +122,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitDoor, interactDistance))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitDoor, doorInteractDistance))
         {
             if (hitDoor.transform.TryGetComponent(out IDoor door))
             {

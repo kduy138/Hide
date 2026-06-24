@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnStateChanged;
     public event EventHandler OnChallengeChanged;
     public event EventHandler OnHidingMinigameStarted;
-    public event EventHandler OnPrologue;
+    public event EventHandler OnGamePlaying;
 
     public enum State
     {
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     private float gameTime = 68400f;
-    private float waitingToStartMinigameTimeMax = 5f;
-    private float currentWaitingToStartMinigameTime = 0f;
+    private float waitingToStartHidingMinigameTimeMax = 5f;
+    private float currentWaitingToStartHidingMinigameTime = 0f;
 
     private void Awake()
     {
@@ -53,15 +53,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        switch(state)
+        switch (state)
         {
             case State.Prologue:
-                OnPrologue?.Invoke(this, EventArgs.Empty);
                 break;
             case State.GamePlaying:
                 Time.timeScale = 1f;
-                gameTime += Time.deltaTime;
-
+                OnGamePlaying?.Invoke(this, EventArgs.Empty);
                 break;
             case State.GameOver:
                 Time.timeScale = 0f;
@@ -69,17 +67,17 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = true;
                 break;
         }
-        Debug.Log(state);
 
-        switch(challenge)
+
+        switch (challenge)
         {
             case Challenge.None:
-                currentWaitingToStartMinigameTime = waitingToStartMinigameTimeMax;
+                currentWaitingToStartHidingMinigameTime = waitingToStartHidingMinigameTimeMax;
                 break;
             case Challenge.Hide:
-                currentWaitingToStartMinigameTime -= Time.deltaTime;
+                currentWaitingToStartHidingMinigameTime -= Time.deltaTime;
 
-                if (currentWaitingToStartMinigameTime <= 0f)
+                if (currentWaitingToStartHidingMinigameTime <= 0f)
                 {
                     OnHidingMinigameStarted?.Invoke(this, EventArgs.Empty);
                     challenge = Challenge.OneMoreTime;
@@ -117,6 +115,8 @@ public class GameManager : MonoBehaviour
 
     public void SetGameState(State value)
     {
+        if (state == value) return;
+
         state = value;
     }
 

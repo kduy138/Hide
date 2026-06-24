@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Rendering.MaterialUpgrader;
 
 public class Prolouge : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class Prolouge : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField]
-    private float prolougeTextSpeed = 0.05f;
+    private float prolougeTextSpeed;
 
     [Header("Status")]
     [SerializeField]

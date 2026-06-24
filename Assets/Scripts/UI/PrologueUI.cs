@@ -4,22 +4,12 @@ public class PrologueUI : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.instance.OnPrologue += GameManager_OnPrologue;
+        GameManager.instance.OnGamePlaying += GameManager_OnGamePlaying;
+    }
 
+    private void GameManager_OnGamePlaying(object sender, System.EventArgs e)
+    {
         Hide();
-    }
-
-    private void Update()
-    {
-        if (GameManager.instance.GetCurrentState() == GameManager.State.GamePlaying)
-        {
-            Hide();
-        }
-    }
-
-    private void GameManager_OnPrologue(object sender, System.EventArgs e)
-    {
-        Show();
     }
 
     private void Show()
