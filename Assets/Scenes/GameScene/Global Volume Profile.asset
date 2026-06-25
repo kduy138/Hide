@@ -15,8 +15,8 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.1
---- !u!114 &-2115377067255743427
+    m_Value: 0.2
+--- !u!114 &-6705378745723416818
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25,18 +25,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
-  m_Name: SplitToning
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.SplitToning
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.LensDistortion
   active: 1
-  shadows:
+  intensity:
     m_OverrideState: 1
-    m_Value: {r: 0.2830189, g: 0.3563941, b: 0.3773585, a: 1}
-  highlights:
+    m_Value: 0.25
+  xMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 0
+    m_Value: 2.76
+--- !u!114 &-137157177967807639
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
+  m_Name: PaniniProjection
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.PaniniProjection
+  active: 1
+  distance:
     m_OverrideState: 1
-    m_Value: {r: 0.5, g: 0.3278302, b: 0.3278302, a: 1}
-  balance:
-    m_OverrideState: 1
+    m_Value: 0.449
+  cropToFit:
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
@@ -58,7 +83,8 @@ MonoBehaviour:
   - {fileID: 2578392522339067797}
   - {fileID: 2369645367379027747}
   - {fileID: -7032162257507005359}
-  - {fileID: -2115377067255743427}
+  - {fileID: -137157177967807639}
+  - {fileID: -6705378745723416818}
 --- !u!114 &1496238912462595822
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -122,7 +148,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.29
   smoothness:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.2
   rounded:
     m_OverrideState: 0
@@ -145,13 +171,13 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.755
   response:
-    m_OverrideState: 0
-    m_Value: 0.8
+    m_OverrideState: 1
+    m_Value: 0.482
   texture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 0f887660f59cd1a4882abef4d77c03c7, type: 3}
 --- !u!114 &2578392522339067797
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -217,10 +243,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: -0.19
   contrast:
     m_OverrideState: 1
-    m_Value: 33
+    m_Value: -21
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -229,7 +255,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -34
+    m_Value: -2
 --- !u!114 &4931776701699365089
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -245,10 +271,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.8051944, y: 1, z: 0.8718425, w: 0}
+    m_Value: {x: 0.97364646, y: 1, z: 0.9058993, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.8467247, y: 0.88803065, z: 1, w: 0}
+    m_Value: {x: 0.89446336, y: 0.9534091, z: 1, w: 0}
   highlights:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
