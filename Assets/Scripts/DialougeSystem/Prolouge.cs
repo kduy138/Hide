@@ -28,30 +28,26 @@ public class Prolouge : MonoBehaviour
 
     private Coroutine typingCoroutine;
     private int currentIndex = 0;
-    private bool justStarted = false;
 
     private void Start()
     {
-        GameInput.instance.OnDialogue += GameInput_OnDialogue;
-        StartDialogue(prologueLines);
+        GameInput.instance.OnPrologue += GameInput_OnPrologue;
+        StartPrologue(prologueLines);
     }
 
     private void OnDestroy()
     {
-        GameInput.instance.OnDialogue -= GameInput_OnDialogue;
+        GameInput.instance.OnPrologue -= GameInput_OnPrologue;
     }
 
-    private void GameInput_OnDialogue(object sender, EventArgs e)
+    private void GameInput_OnPrologue(object sender, EventArgs e)
     {
-        if (justStarted)
-        {
-            justStarted = false;
-        }
+        if (isPrologueFinished) return;
 
         if (isTyping)
         {
             StopCoroutine(typingCoroutine);
-            ShowEntireDialogue(prologueLines[currentIndex]);
+            ShowEntirePrologue(prologueLines[currentIndex]);
             isTyping = false;
         }
         else
@@ -72,13 +68,14 @@ public class Prolouge : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueLine[] newPrologueLines)
+    public void StartPrologue(DialogueLine[] newPrologueLines)
     {
+        if (newPrologueLines == null || newPrologueLines.Length == 0) return;
+
         OnPrologueStarted?.Invoke(this, EventArgs.Empty);
         isPrologueFinished = false;
         prologueLines = newPrologueLines;
         currentIndex = 0;
-        justStarted = true;
         typingCoroutine = StartCoroutine(TypeLine(prologueLines[currentIndex]));
     }
 
@@ -96,12 +93,12 @@ public class Prolouge : MonoBehaviour
         isTyping = false;
     }
 
-    private void ShowEntireDialogue(DialogueLine dialogueLine)
+    private void ShowEntirePrologue(DialogueLine dialogueLine)
     {
         prologueTxt.text = dialogueLine.dialougeTxt;
     }
 
-    public bool IsDialogueFinished()
+    public bool IsPrologueFinished()
     {
         return isPrologueFinished;
     }

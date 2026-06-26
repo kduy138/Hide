@@ -51,11 +51,6 @@ public class DialogueManager : MonoBehaviour
         GameInput.instance.OnDialogue += GameInput_OnDialogue;
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void OnDestroy()
     {
         GameInput.instance.OnDialogue -= GameInput_OnDialogue;
@@ -63,6 +58,8 @@ public class DialogueManager : MonoBehaviour
 
     private void GameInput_OnDialogue(object sender, EventArgs e)
     {
+        if (isDialogueFinished) return;
+
         if (justStarted)
         {
             justStarted = false;
@@ -94,6 +91,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueLine[] newDialogueLines)
     {
+        if (newDialogueLines == null || newDialogueLines.Length == 0) return;
+
         OnDialogueStarted?.Invoke(this, EventArgs.Empty);
         isDialogueFinished = false;
         dialogueLines = newDialogueLines;

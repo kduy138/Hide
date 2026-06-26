@@ -10,6 +10,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnInteractAction;
     public event EventHandler OnOpenClose;
     public event EventHandler OnDialogue;
+    public event EventHandler OnPrologue;
     public event EventHandler OnStopMarker;
 
     private Player_InputActions playerInputActions;
@@ -33,6 +34,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.OpenClose.performed += OpenClose_performed;
         playerInputActions.Player.Dialogue.performed += Dialogue_performed;
+        playerInputActions.Player.Dialogue.performed += Prologue_performed;
         playerInputActions.Player.StopMarker.performed += StopMarker_performed;
     }
 
@@ -42,9 +44,15 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.OpenClose.performed -= OpenClose_performed;
         playerInputActions.Player.Dialogue.performed -= Dialogue_performed;
+        playerInputActions.Player.Dialogue.performed -= Prologue_performed;
         playerInputActions.Player.StopMarker.performed -= StopMarker_performed;
 
         playerInputActions.Dispose();
+    }
+
+    private void Prologue_performed(InputAction.CallbackContext obj)
+    {
+        OnPrologue?.Invoke(this, EventArgs.Empty);
     }
 
     private void StopMarker_performed(InputAction.CallbackContext obj)
