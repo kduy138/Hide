@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,9 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnDialogue;
     public event EventHandler OnPrologue;
     public event EventHandler OnStopMarker;
+
+    [Description("Test events")]
+    public event EventHandler OnSwitchCamera;
 
     private Player_InputActions playerInputActions;
 
@@ -36,6 +40,8 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Dialogue.performed += Dialogue_performed;
         playerInputActions.Player.Dialogue.performed += Prologue_performed;
         playerInputActions.Player.StopMarker.performed += StopMarker_performed;
+
+        playerInputActions.Test.SwitchCamera.performed += SwitchCamera_performed;
     }
 
     private void OnDestroy()
@@ -47,7 +53,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Dialogue.performed -= Prologue_performed;
         playerInputActions.Player.StopMarker.performed -= StopMarker_performed;
 
+        playerInputActions.Test.SwitchCamera.performed -= SwitchCamera_performed;
+
         playerInputActions.Dispose();
+    }
+
+    private void SwitchCamera_performed(InputAction.CallbackContext obj)
+    {
+        OnSwitchCamera?.Invoke(this, EventArgs.Empty);
     }
 
     private void Prologue_performed(InputAction.CallbackContext obj)
