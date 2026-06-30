@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnChallengeChanged;
     public event EventHandler OnHidingMinigameStarted;
     public event EventHandler OnGamePlaying;
+    public event EventHandler OnDialogue;
 
     public enum State
     {
         Prologue,
+        Dialogue,
         GamePlaying,
         GameOver,
     }
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     private float gameTime = 68400f;
     private float waitingToStartHidingMinigameTimeMax = 5f;
     private float currentWaitingToStartHidingMinigameTime = 0f;
+    private int currentDialogueSceneIdx = 0;
 
     private void Awake()
     {
@@ -57,6 +60,9 @@ public class GameManager : MonoBehaviour
         {
             case State.Prologue:
                 break;
+            case State.Dialogue:
+                OnDialogue?.Invoke(this, EventArgs.Empty);
+                break;
             case State.GamePlaying:
                 Time.timeScale = 1f;
                 OnGamePlaying?.Invoke(this, EventArgs.Empty);
@@ -67,7 +73,7 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = true;
                 break;
         }
-
+        //Debug.Log(state);
 
         switch (challenge)
         {
@@ -96,6 +102,11 @@ public class GameManager : MonoBehaviour
             case Challenge.PointToSacrifice:
                 break;
         }
+    }
+
+    public void AdvanceDialogueScene()
+    {
+        currentDialogueSceneIdx++;
     }
 
     public bool IsGamePlaying()
@@ -133,5 +144,10 @@ public class GameManager : MonoBehaviour
     public Challenge GetCurrentChallenge()
     {
         return challenge;
+    }
+
+    public int GetCurrentDialogueSceneIdx()
+    {
+        return currentDialogueSceneIdx;
     }
 }

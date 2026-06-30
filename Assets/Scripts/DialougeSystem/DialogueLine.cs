@@ -9,10 +9,15 @@ public class DialogueLine
 
     public string GetSpeakerName()
     {
-        if (speakerName == "Player")
+        if (speakerName == "<player>")
         {
             return Player.instance.GetPlayerName();
         }
         return speakerName;
+    }
+
+    public string GetDialogueText()
+    {
+        return dialougeTxt.Replace("<player>", Player.instance.GetPlayerName());
     }
 }

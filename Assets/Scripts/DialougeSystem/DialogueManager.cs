@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField]
-    private float dialogueTextSpeed = 0.05f;
+    private float dialogueTextSpeed = 0.1f;
 
     [Header("Status")]
     [SerializeField]
@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     private DialogueLine[] dialogueLines;
 
     private Coroutine typingCoroutine;
-    private int currentIndex = 0;
+    private int currentDialogueLineIndex = 0;
     private bool justStarted = false;
 
     private void Awake()
@@ -68,22 +68,23 @@ public class DialogueManager : MonoBehaviour
         if (isTyping)
         {
             StopCoroutine(typingCoroutine);
-            ShowEntireDialogue(dialogueLines[currentIndex]);
+            ShowEntireDialogue(dialogueLines[currentDialogueLineIndex]);
             isTyping = false;
         }
         else
         {
-            currentIndex++;
+            currentDialogueLineIndex++;
 
-            if (currentIndex < dialogueLines.Length)
+            if (currentDialogueLineIndex < dialogueLines.Length)
             {
-                typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentIndex]));
+                typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentDialogueLineIndex]));
             }
             else
             {
                 dialogueTxt.text = "";
                 speakerNameTxt.text = "";
                 isDialogueFinished = true;
+                GameManager.instance.SetGameState(GameManager.State.GamePlaying);
                 OnDialogueEnded?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -91,14 +92,25 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueLine[] newDialogueLines)
     {
-        if (newDialogueLines == null || newDialogueLines.Length == 0) return;
+        if (newDialogueLines == null || newDialogueLines.Length == 0)
+        {
+            Debug.Log("No dialogue lines to start!");
+            return;
+        }
+
+        //if (!isDialogueFinished) return;
+
+        //if (typingCoroutine != null)
+        //{
+        //    StopCoroutine(typingCoroutine);
+        //}
 
         OnDialogueStarted?.Invoke(this, EventArgs.Empty);
         isDialogueFinished = false;
         dialogueLines = newDialogueLines;
-        currentIndex = 0;
+        currentDialogueLineIndex = 0;
         justStarted = true;
-        typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentIndex]));
+        typingCoroutine = StartCoroutine(TypeLine(dialogueLines[currentDialogueLineIndex]));
     }
 
     private IEnumerator TypeLine(DialogueLine dialogueLine)
@@ -108,7 +120,9 @@ public class DialogueManager : MonoBehaviour
         dialogueTxt.text = "";
         speakerNameTxt.text = dialogueLine.GetSpeakerName();
 
-        foreach (char c in dialogueLine.dialougeTxt)
+        string fullTxt = dialogueLine.GetDialogueText();
+
+        foreach (char c in fullTxt)
         {
             dialogueTxt.text += c;
             yield return new WaitForSeconds(dialogueTextSpeed);
@@ -118,7 +132,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ShowEntireDialogue(DialogueLine dialogueLine)
     {
-        dialogueTxt.text = dialogueLine.dialougeTxt;
+        dialogueTxt.text = dialogueLine.GetDialogueText();
         speakerNameTxt.text = dialogueLine.GetSpeakerName();
     }
 

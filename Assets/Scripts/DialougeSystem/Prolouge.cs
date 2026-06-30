@@ -62,7 +62,7 @@ public class Prolouge : MonoBehaviour
             {
                 prologueTxt.text = "";
                 isPrologueFinished = true;
-                GameManager.instance.SetGameState(GameManager.State.GamePlaying);
+                GameManager.instance.SetGameState(GameManager.State.Dialogue);
                 OnPrologueEnded?.Invoke(this, EventArgs.Empty);
             }
         }

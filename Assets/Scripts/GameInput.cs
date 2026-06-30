@@ -14,7 +14,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPrologue;
     public event EventHandler OnStopMarker;
 
-    [Description("Test events")]
+    // Test events
     public event EventHandler OnSwitchCamera;
 
     private Player_InputActions playerInputActions;

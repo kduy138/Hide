@@ -7,7 +7,7 @@ public class DialogueBoxUI : MonoBehaviour
         DialogueManager.instance.OnDialogueStarted += DialogueManager_OnDialogueStarted;
         DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
 
-        Hide();
+        //Hide();
     }
 
     private void OnDisable()
