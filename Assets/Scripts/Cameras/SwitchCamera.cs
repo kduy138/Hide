@@ -28,16 +28,16 @@ public class SwitchCamera : MonoBehaviour
 
     private void Start()
     {
-        GameInput.instance.OnSwitchCamera += GameInput_OnSwitchCamera;
+        //GameInput.instance.OnSwitchCamera += GameInput_OnSwitchCamera;
     }
 
-    private void GameInput_OnSwitchCamera(object sender, System.EventArgs e)
-    {
-        Debug.LogError("Pressed C!");
-        Switch();
-    }
+    //private void GameInput_OnSwitchCamera(object sender, System.EventArgs e)
+    //{
+    //    Debug.LogError("Pressed C!");
+    //    Switch();
+    //}
 
-    private void Switch()
+    public void Switch()
     {
         Debug.LogError("Switching Camera!");
         if (cameraIndex == 0)

@@ -86,6 +86,7 @@ public class DialogueManager : MonoBehaviour
                 isDialogueFinished = true;
                 GameManager.instance.SetGameState(GameManager.State.GamePlaying);
                 OnDialogueEnded?.Invoke(this, EventArgs.Empty);
+                SwitchCamera.instance.Switch();
             }
         }
     }
