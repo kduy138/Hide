@@ -1,36 +1,26 @@
+using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MonopolyCam : MonoBehaviour
 {
     [SerializeField]
-    private float cameraSensX;
-    [SerializeField]
-    private float cameraSensY;
+    private CinemachineVirtualCamera monopolyCam;
 
     [SerializeField]
-    private Transform orientation;
-
-    private float xRotation;
-    private float yRotation;
-
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    private List<GameObject> characters;
 
     private void Update()
     {
-        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+        if (GameManager.instance.GetCurrentState() != GameManager.State.Dialogue) return;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * cameraSensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * cameraSensY;
+        foreach (GameObject c in characters) {
+            CharacterDialogueInfo cdi = c.GetComponent<CharacterDialogueInfo>();
 
-        yRotation += mouseX;
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-    }
+            if (cdi.characterName == DialogueManager.instance.GetCurrentSpeakerName())
+            {
+                monopolyCam.LookAt = cdi.characterFocusPoint.transform;
+            }
+        }
+    }    
 }

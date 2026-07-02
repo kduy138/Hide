@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnChallengeChanged;
     public event EventHandler OnHidingMinigameStarted;
     public event EventHandler OnGamePlaying;
+    public event EventHandler OnPrologue;
     public event EventHandler OnDialogue;
 
     public enum State
     {
+        NameInput,
         Prologue,
         Dialogue,
         GamePlaying,
@@ -34,7 +36,6 @@ public class GameManager : MonoBehaviour
     private Challenge challenge;
 
     [Header("Settings")]
-    private float gameTime = 68400f;
     private float waitingToStartHidingMinigameTimeMax = 5f;
     private float currentWaitingToStartHidingMinigameTime = 0f;
     private int currentDialogueSceneIdx = 0;
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        state = State.Prologue;
+        state = State.NameInput;
         challenge = Challenge.None;
     }
 
@@ -58,7 +59,12 @@ public class GameManager : MonoBehaviour
     {
         switch (state)
         {
+            case State.NameInput:
+                UnlockCursor();
+                break;
             case State.Prologue:
+                LockCursor();
+                OnPrologue?.Invoke(this, EventArgs.Empty);
                 break;
             case State.Dialogue:
                 OnDialogue?.Invoke(this, EventArgs.Empty);
@@ -69,11 +75,10 @@ public class GameManager : MonoBehaviour
                 break;
             case State.GameOver:
                 Time.timeScale = 0f;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                UnlockCursor();
                 break;
         }
-        //Debug.Log(state);
+        Debug.Log(state);
 
         switch (challenge)
         {
@@ -114,16 +119,6 @@ public class GameManager : MonoBehaviour
         return state == State.GamePlaying;
     }
 
-    public string GetFormattedTime()
-    {
-        int totalSeconds = Mathf.FloorToInt(gameTime);
-        int hours = totalSeconds / 3600;
-        int minutes = (totalSeconds % 3600) / 60;
-        int seconds = totalSeconds % 60;
-
-        return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
-    }
-
     public void SetGameState(State value)
     {
         if (state == value) return;
@@ -149,5 +144,17 @@ public class GameManager : MonoBehaviour
     public int GetCurrentDialogueSceneIdx()
     {
         return currentDialogueSceneIdx;
+    }
+
+    private void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

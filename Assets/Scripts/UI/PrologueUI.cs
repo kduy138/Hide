@@ -7,14 +7,14 @@ public class PrologueUI : MonoBehaviour
         GameManager.instance.OnDialogue += GameManager_OnDialogue;
     }
 
+    private void OnDisable()
+    {
+        GameManager.instance.OnDialogue -= GameManager_OnDialogue;
+    }
+
     private void GameManager_OnDialogue(object sender, System.EventArgs e)
     {
         Hide();
-    }
-
-    private void Show()
-    {
-        gameObject.SetActive(true);
     }
 
     private void Hide()

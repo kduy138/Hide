@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI speakerNameTxt;
     [SerializeField]
     private TextMeshProUGUI dialogueTxt;
+    [SerializeField]
+    private string currentSpeakerName;
 
     [Header("Settings")]
     [SerializeField]
@@ -120,6 +122,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueTxt.text = "";
         speakerNameTxt.text = dialogueLine.GetSpeakerName();
+        currentSpeakerName = dialogueLine.GetSpeakerName();
 
         string fullTxt = dialogueLine.GetDialogueText();
 
@@ -140,5 +143,10 @@ public class DialogueManager : MonoBehaviour
     public bool IsDialogueFinished()
     {
         return isDialogueFinished;
+    }
+
+    public string GetCurrentSpeakerName()
+    {
+        return currentSpeakerName;
     }
 }

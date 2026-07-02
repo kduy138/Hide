@@ -32,12 +32,20 @@ public class Prolouge : MonoBehaviour
     private void Start()
     {
         GameInput.instance.OnPrologue += GameInput_OnPrologue;
-        StartPrologue(prologueLines);
+        GameManager.instance.OnPrologue += GameManager_OnPrologue;
     }
 
     private void OnDestroy()
     {
         GameInput.instance.OnPrologue -= GameInput_OnPrologue;
+        GameManager.instance.OnPrologue -= GameManager_OnPrologue;
+    }
+
+    private void GameManager_OnPrologue(object sender, EventArgs e)
+    {
+        if (!isPrologueFinished) return;
+
+        StartPrologue(prologueLines);
     }
 
     private void GameInput_OnPrologue(object sender, EventArgs e)
@@ -70,6 +78,7 @@ public class Prolouge : MonoBehaviour
 
     public void StartPrologue(DialogueLine[] newPrologueLines)
     {
+        if (GameManager.instance.GetCurrentState() != GameManager.State.Prologue) return;
         if (newPrologueLines == null || newPrologueLines.Length == 0) return;
 
         OnPrologueStarted?.Invoke(this, EventArgs.Empty);

@@ -242,4 +242,9 @@ public class Player : MonoBehaviour
     {
         return playerName;
     }
+
+    public void SetPlayerName(string value)
+    {
+        playerName = value;
+    }
 }
