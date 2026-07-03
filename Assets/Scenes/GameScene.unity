@@ -210,8 +210,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1833,8 +1833,15 @@ MonoBehaviour:
   isTyping: 0
   isPrologueFinished: 1
   prologueLines:
-  - speakerName: Test
+  - id: 0
+    speakerName: Test
     dialougeTxt: This is prologue text. Just for testing purpose!
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
 --- !u!114 &262225371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3360,11 +3367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc82b25d607decb42be76519ecafd374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonopolyCam
-  monopolyCam: {fileID: 1262312742}
-  characters:
-  - {fileID: 611640932}
-  - {fileID: 293376557}
-  - {fileID: 873203405}
+  sceneCam: {fileID: 1262312742}
 --- !u!1 &493927913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 808951036821181157, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
@@ -3847,10 +3850,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScene
   sceneIdx: 1
   dialogueLines:
-  - speakerName: Scene 2
+  - id: 0
+    speakerName: Scene 2
     dialougeTxt: This is scene_2 dialogue.
-  - speakerName: Scene 2
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 0
+    speakerName: Scene 2
     dialougeTxt: This is scene_2 dialogue line 2.
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
 --- !u!1001 &569955094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4119,6 +4136,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612463889}
   m_CullTransparentMesh: 1
+--- !u!1 &619064245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619064246}
+  m_Layer: 0
+  m_Name: CameraFocusPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619064246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619064245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1681358217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619579509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,10 +4502,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScene
   sceneIdx: 1
   dialogueLines:
-  - speakerName: Scene 3
+  - id: 0
+    speakerName: Scene 3
     dialougeTxt: This is scene_3 dialogue line.
-  - speakerName: Scene 3
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 0
+    speakerName: Scene 3
     dialougeTxt: This is scene_3 dialogue line 2.
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
 --- !u!1 &712653952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,6 +4607,147 @@ Transform:
   - {fileID: 422594969}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &747948373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747948374}
+  - component: {fileID: 747948377}
+  - component: {fileID: 747948376}
+  - component: {fileID: 747948375}
+  - component: {fileID: 747948379}
+  - component: {fileID: 747948380}
+  m_Layer: 0
+  m_Name: HideScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &747948374
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.2, z: 0.254}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1539780952}
+  m_Father: {fileID: 1681358217}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.002, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!64 &747948375
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &747948376
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bbc4e18e895e99a468291c41300b3f55, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &747948377
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!222 &747948379
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_CullTransparentMesh: 1
+--- !u!114 &747948380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747948373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b68ab75846ef2443a6ae8e9249a812f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TV
+  tvScreen: {fileID: 747948373}
 --- !u!4 &760247713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 646888896587959858, guid: 5aac716a11271124887a33ec1836f27b, type: 3}
@@ -4643,7 +4846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c623adea35544e880570fe8d4c19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogueInfo
-  characterName: Ravi
   characterFocusPoint: {fileID: 906232308}
 --- !u!95 &766489002 stripped
 Animator:
@@ -7217,7 +7419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c623adea35544e880570fe8d4c19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogueInfo
-  characterName: Evelyn
   characterFocusPoint: {fileID: 621811935}
 --- !u!1 &1307804840
 GameObject:
@@ -7482,62 +7683,209 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScene
   sceneIdx: 0
   dialogueLines:
-  - speakerName: Evelyn
+  - id: 0
+    speakerName: Evelyn
     dialougeTxt: '"I swear to God, if you get Free Parking, I will literally kill
       your stupid face."'
-  - speakerName: Ravi
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 611640932}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 1
+    speakerName: Ravi
     dialougeTxt: '"Come on, sweet baby Jesus. I just need a four."'
-  - speakerName: Ravi
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 2
+    speakerName: Ravi
     dialougeTxt: He dropped them onto the board. "Fuck!"
-  - speakerName: Your thought
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 3
+    speakerName: Your thought
     dialougeTxt: I tried to make sense of it. Just a word on my screen - black text
       on all white background, a rather classical-looking font. "HIDE!"
-  - speakerName: 
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 4
+    speakerName: 
     dialougeTxt: You tapped, rather impatienly, on the expensive rectangle. The text
       wouldn't disappear.
-  - speakerName: Evelyn
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 5
+    speakerName: Evelyn
     dialougeTxt: '"<player>," she called, like a teacher busting a student. "You''re
       fucking addicted. Play board games like a normal human."'
-  - speakerName: <player>
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 611640932}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 6
+    speakerName: <player>
     dialougeTxt: '"Yeah. I - sorry." I put the phone to the side. I grabbed a dice,
       rolled a three, landed on a B & O Railroad. After two seconds of thought. "Nah,
       fuck the railroads."'
-  - speakerName: 
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 7
+    speakerName: 
     dialougeTxt: "Of course, we weren\u2019t animals. If someone didn\u2019t want
       to buy a property, that was fine. No auctions or any of that nonsense. House
       rules."
-  - speakerName: Your thought
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 8
+    speakerName: Your thought
     dialougeTxt: 'I felt the apartment rumble, just for a split second. As if we
       were on the edge of an earthquake. I tensed, briefly. '
-  - speakerName: Ravi
-    dialougeTxt: As the first to get up, talking slowly as if not to jinx it. "I
-      don't think that was an earthquake?"
-  - speakerName: Your thought
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 9
+    speakerName: Ravi
+    dialougeTxt: Talking slowly as if not to jinx it. "I don't think that was an
+      earthquake?"
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 10
+    speakerName: Your thought
     dialougeTxt: I grappled with the sad, likely hacked state of my phone - and that
       weird word keep appearing in my head.
-  - speakerName: Hiro
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 11
+    speakerName: Hiro
     dialougeTxt: '"Damn, that''s fucking weird." half-laughing.'
-  - speakerName: <player>
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 873203405}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 12
+    speakerName: <player>
     dialougeTxt: '"What?" I asked Hiro.'
-  - speakerName: Hiro
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 873203405}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 13
+    speakerName: Hiro
     dialougeTxt: '"My phone screen had been replace by a weird white screen with
       the word ''HIDE'' on it."'
-  - speakerName: Evelyn
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 873203405}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 14
+    speakerName: Evelyn
     dialougeTxt: '"The fuck? What is this? My phone is showing the same thing."'
-  - speakerName: <player>
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 611640932}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 15
+    speakerName: <player>
     dialougeTxt: I grew a bit nervous. "Ravi, where is your phone?"
-  - speakerName: Ravi
-    dialougeTxt: '"I''m sure it''s somewhere." staring at the TV.'
-  - speakerName: 
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 16
+    speakerName: Ravi
+    dialougeTxt: '"I''m sure it''s somewhere."'
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 17
+    speakerName: 
     dialougeTxt: 'A simple message now appeared on the big screen. '
-  - speakerName: Hiro
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 1681358216}
+    dialogueEvent:
+      hasDialogueEvent: 1
+      eventObj: {fileID: 747948373}
+  - id: 18
+    speakerName: Hiro
     dialougeTxt: '"Is that like an amber alert?"'
-  - speakerName: Ravi
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 873203405}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 19
+    speakerName: Ravi
     dialougeTxt: "\"I mean I guess but that\u2019s a push notification, this is like,
       completely overtaking the screen. On different hardware too.\""
-  - speakerName: Your thought
+    cameraEvent:
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
+  - id: 20
+    speakerName: Your thought
     dialougeTxt: A thought came over you. You want to look out the windows to see
       if something is happening out there too.
+    cameraEvent:
+      hasCameraEvent: 0
+      lookAtTarget: {fileID: 0}
+    dialogueEvent:
+      hasDialogueEvent: 0
+      eventObj: {fileID: 0}
 --- !u!1 &1346204369
 GameObject:
   m_ObjectHideFlags: 0
@@ -7939,7 +8287,11 @@ MonoBehaviour:
   speakerNameTxt: {fileID: 1613050002}
   dialogueTxt: {fileID: 2282108}
   currentSpeakerName: 
-  dialogueTextSpeed: 0.05
+  currentDialogueID: 0
+  currentCameraEvent:
+    hasCameraEvent: 0
+    lookAtTarget: {fileID: 0}
+  dialogueTextSpeed: 0.02
   isTyping: 0
   isDialogueFinished: 1
   dialogueLines: []
@@ -8082,8 +8434,190 @@ Transform:
   - {fileID: 991787781}
   - {fileID: 1490669827}
   - {fileID: 619579510}
+  - {fileID: 2080419792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1539780951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1539780952}
+  - component: {fileID: 1539780954}
+  - component: {fileID: 1539780953}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1539780952
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539780951}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 747948374}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.04}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1539780953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539780951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: HIDE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 16
+  m_fontSizeBase: 16
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1539780954}
+  m_maskType: 0
+--- !u!23 &1539780954
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539780951}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1552174619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8439,7 +8973,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -507, y: 148}
+  m_AnchoredPosition: {x: 0, y: 151}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613050002
@@ -9158,6 +9692,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3106a6f3c2fc2a547b55f8f47ff2e09c, type: 3}
+--- !u!1 &1681358216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 808951037896035195, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+  m_PrefabInstance: {fileID: 2130839118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1681358217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 808951037896035194, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+  m_PrefabInstance: {fileID: 2130839118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1681358220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681358216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629c623adea35544e880570fe8d4c19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogueInfo
+  characterFocusPoint: {fileID: 619064245}
 --- !u!1 &1707766929
 GameObject:
   m_ObjectHideFlags: 0
@@ -9349,7 +9906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.9607843}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10927,6 +11484,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077614335}
   m_CullTransparentMesh: 1
+--- !u!1 &2080419791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080419792}
+  - component: {fileID: 2080419793}
+  m_Layer: 0
+  m_Name: DialogueEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2080419792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080419791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1538054682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2080419793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080419791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e20651b66c16243b5b210205942112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEventManager
 --- !u!4 &2086448159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5769129917905125718, guid: 3106a6f3c2fc2a547b55f8f47ff2e09c, type: 3}
@@ -11031,7 +11632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629c623adea35544e880570fe8d4c19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogueInfo
-  characterName: Hiro
   characterFocusPoint: {fileID: 2039533854}
 --- !u!1001 &2130839118
 PrefabInstance:
@@ -11431,7 +12031,13 @@ PrefabInstance:
     - {fileID: 808951037173668704, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951037609383988, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951037139602505, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 808951037896035194, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 619064246}
+    - targetCorrespondingSourceObject: {fileID: 808951037896035194, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 747948374}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 808951036999403350, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       insertIndex: -1
@@ -11469,6 +12075,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 550311521, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1121686761}
+    - targetCorrespondingSourceObject: {fileID: 808951037896035195, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1681358220}
     - targetCorrespondingSourceObject: {fileID: 808951038010299893, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1282317045}

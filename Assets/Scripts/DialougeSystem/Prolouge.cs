@@ -94,7 +94,7 @@ public class Prolouge : MonoBehaviour
 
         prologueTxt.text = "";
 
-        foreach (char c in prologueLine.dialougeTxt)
+        foreach (char c in prologueLine.GetDialogueText())
         {
             prologueTxt.text += c;
             yield return new WaitForSeconds(prolougeTextSpeed);
@@ -104,7 +104,7 @@ public class Prolouge : MonoBehaviour
 
     private void ShowEntirePrologue(DialogueLine dialogueLine)
     {
-        prologueTxt.text = dialogueLine.dialougeTxt;
+        prologueTxt.text = dialogueLine.GetDialogueText();
     }
 
     public bool IsPrologueFinished()

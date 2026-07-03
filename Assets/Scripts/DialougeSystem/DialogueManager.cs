@@ -17,6 +17,11 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueTxt;
     [SerializeField]
     private string currentSpeakerName;
+    [SerializeField]
+    private int currentDialogueID;
+    [SerializeField]
+    private CameraEvent currentCameraEvent;
+    private DialogueEvent currentDialogueEvent;
 
     [Header("Settings")]
     [SerializeField]
@@ -101,12 +106,12 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        //if (!isDialogueFinished) return;
+        if (!isDialogueFinished) return;
 
-        //if (typingCoroutine != null)
-        //{
-        //    StopCoroutine(typingCoroutine);
-        //}
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
 
         OnDialogueStarted?.Invoke(this, EventArgs.Empty);
         isDialogueFinished = false;
@@ -123,6 +128,17 @@ public class DialogueManager : MonoBehaviour
         dialogueTxt.text = "";
         speakerNameTxt.text = dialogueLine.GetSpeakerName();
         currentSpeakerName = dialogueLine.GetSpeakerName();
+        currentDialogueID = dialogueLine.GetDialogueID();
+
+        if (dialogueLine.GetCameraEvent() != null)
+        {
+            currentCameraEvent = dialogueLine.GetCameraEvent();
+        }
+
+        if (dialogueLine.GetDialogueEvent() != null)
+        {
+            currentDialogueEvent = dialogueLine.GetDialogueEvent();
+        }
 
         string fullTxt = dialogueLine.GetDialogueText();
 
@@ -148,5 +164,20 @@ public class DialogueManager : MonoBehaviour
     public string GetCurrentSpeakerName()
     {
         return currentSpeakerName;
+    }
+
+    public int GetCurrentDialogueID()
+    {
+        return currentDialogueID;
+    }
+
+    public CameraEvent GetCurrentCameraEvent()
+    {
+        return currentCameraEvent;
+    }
+
+    public DialogueEvent GetCurrentDialogueEvent()
+    {
+        return currentDialogueEvent;
     }
 }

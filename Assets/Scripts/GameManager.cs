@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 UnlockCursor();
                 break;
         }
-        Debug.Log(state);
+        //Debug.Log(state);
 
         switch (challenge)
         {
