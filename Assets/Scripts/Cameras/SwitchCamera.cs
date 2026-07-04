@@ -28,7 +28,6 @@ public class SwitchCamera : MonoBehaviour
 
     public void Switch()
     {
-        Debug.LogError("Switching Camera!");
         if (cameraIndex == 0)
         {
             PlayerCamera();

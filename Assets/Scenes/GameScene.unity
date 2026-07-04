@@ -7026,6 +7026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262312741}
   - component: {fileID: 1262312742}
+  - component: {fileID: 1262312743}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -7088,6 +7089,89 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1121734022}
+--- !u!114 &1262312743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262312740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a222332de2554449999596a19804c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+  start: 0
+  shakeDuration: 0.5
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.28566527
+      outSlope: 0.28566527
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.11200844
+      value: 0.03199692
+      inSlope: 0.09597494
+      outSlope: 0.09597494
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.27708888
+      value: 0.016526341
+      inSlope: -0.067181356
+      outSlope: -0.067181356
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40390816
+      value: 0.011371478
+      inSlope: -0.034272734
+      outSlope: -0.034272734
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.587822
+      value: 0.006240621
+      inSlope: -0.022735953
+      outSlope: -0.022735953
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.78980315
+      value: 0.0026910547
+      inSlope: -0.015188149
+      outSlope: -0.015188149
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.012802545
+      outSlope: -0.012802545
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1269579955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5769129917905125718, guid: 3106a6f3c2fc2a547b55f8f47ff2e09c, type: 3}
@@ -7771,8 +7855,8 @@ MonoBehaviour:
       hasCameraEvent: 0
       lookAtTarget: {fileID: 0}
     dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
+      hasDialogueEvent: 1
+      eventObj: {fileID: 1262312740}
   - id: 9
     speakerName: Ravi
     dialougeTxt: Talking slowly as if not to jinx it. "I don't think that was an
@@ -8503,8 +8587,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
