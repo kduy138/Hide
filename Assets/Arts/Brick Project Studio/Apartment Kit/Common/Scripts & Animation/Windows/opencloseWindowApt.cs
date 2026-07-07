@@ -8,6 +8,12 @@ namespace SojaExiles
 	public class opencloseWindowApt : MonoBehaviour, IDoor
 	{
 
+		[Header("References")]
+		[SerializeField]
+		private GameObject windowsCam;
+		[SerializeField]
+		private GameObject mainCam;
+
 		public Animator openandclosewindow;
 		public bool open;
 
@@ -46,15 +52,17 @@ namespace SojaExiles
 
 		IEnumerator opening()
 		{
-			print("you are opening the Window");
 			openandclosewindow.Play("Openingwindow");
 			open = true;
-			yield return new WaitForSeconds(.5f);
-		}
+            yield return new WaitForSeconds(.5f);
+            if (ObjectiveManager.instance.GetCurrentObjective() == ObjectiveManager.State.LookOutTheWindows)
+            {
+                SwitchCamera.instance.SwitchTo(windowsCam, mainCam);
+            }
+        }
 
 		IEnumerator closing()
 		{
-			print("you are closing the Window");
 			openandclosewindow.Play("Closingwindow");
 			open = false;
 			yield return new WaitForSeconds(.5f);

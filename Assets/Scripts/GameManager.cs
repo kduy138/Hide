@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
     private float currentWaitingToStartHidingMinigameTime = 0f;
     private int currentDialogueSceneIdx = 0;
 
+    [Header("References")]
+    [SerializeField]
+    private GameObject monopolyCam;
+    [SerializeField]
+    private GameObject mainCam;
+
     private void Awake()
     {
         if (instance == null)
@@ -53,6 +59,11 @@ public class GameManager : MonoBehaviour
 
         state = State.NameInput;
         challenge = Challenge.None;
+    }
+
+    private void Start()
+    {
+        DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
     }
 
     private void Update()
@@ -105,6 +116,17 @@ public class GameManager : MonoBehaviour
             case Challenge.CloseYourEyes:
                 break;
             case Challenge.PointToSacrifice:
+                break;
+        }
+    }
+
+    private void DialogueManager_OnDialogueEnded(object sender, EventArgs e)
+    {
+        switch(currentDialogueSceneIdx)
+        {
+            case 0:
+                ObjectiveManager.instance.SetCurrentObjective(ObjectiveManager.State.LookOutTheWindows);
+                SwitchCamera.instance.SwitchTo(mainCam, monopolyCam);
                 break;
         }
     }
