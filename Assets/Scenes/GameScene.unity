@@ -3235,10 +3235,10 @@ MonoBehaviour:
     isActive: 0
     isCompleted: 0
   - state: 2
-    objectiveDes: Find Ravi's phone to see if it is still working.
+    objectiveDes: Sit down and tell your friends what you see outside.
     isActive: 0
     isCompleted: 0
-  - state: 2
+  - state: 3
     objectiveDes: Find Ravi's phone to see if it is still working.
     isActive: 0
     isCompleted: 0
@@ -12753,6 +12753,7 @@ PrefabInstance:
     - {fileID: 808951037173668704, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951037609383988, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     - {fileID: 808951037139602505, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
+    - {fileID: 808951038352850149, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 808951037896035194, guid: 49f576a03ece56a4e9c640ed081f6a68, type: 3}
       insertIndex: -1

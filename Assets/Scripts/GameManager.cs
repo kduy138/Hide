@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 ObjectiveManager.instance.SetCurrentObjective(ObjectiveManager.State.LookOutTheWindows);
+                ObjectiveManager.instance.GetCurrentObjective().SetIsActive(true);
                 SwitchCamera.instance.SwitchTo(mainCam, monopolyCam);
                 break;
         }

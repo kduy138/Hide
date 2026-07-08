@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ObjectiveManager : MonoBehaviour
     {
         None,
         LookOutTheWindows,
+        TellYourFriends,
         FindThePhone,
     }
 
@@ -47,7 +49,13 @@ public class ObjectiveManager : MonoBehaviour
         }
     }
 
-    public State GetCurrentObjective()
+    public Objective GetCurrentObjective()
+    {
+        Objective currentObjective = System.Array.Find(objectives, o => o.GetState() == GetCurrentState());
+        return currentObjective;
+    }
+
+    public State GetCurrentState()
     {
         return state;
     }
