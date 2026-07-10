@@ -40,12 +40,6 @@ public class GameManager : MonoBehaviour
     private float currentWaitingToStartHidingMinigameTime = 0f;
     private int currentDialogueSceneIdx = 0;
 
-    [Header("References")]
-    [SerializeField]
-    private GameObject monopolyCam;
-    [SerializeField]
-    private GameObject mainCam;
-
     private void Awake()
     {
         if (instance == null)
@@ -63,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
+        //DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
     }
 
     private void Update()
@@ -120,17 +114,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void DialogueManager_OnDialogueEnded(object sender, EventArgs e)
-    {
-        switch(currentDialogueSceneIdx)
-        {
-            case 0:
-                ObjectiveManager.instance.SetCurrentObjective(ObjectiveManager.State.LookOutTheWindows);
-                ObjectiveManager.instance.GetCurrentObjective().SetIsActive(true);
-                SwitchCamera.instance.SwitchTo(mainCam, monopolyCam);
-                break;
-        }
-    }
+    //private void DialogueManager_OnDialogueEnded(object sender, EventArgs e)
+    //{
+    //    switch(currentDialogueSceneIdx)
+    //    {
+    //        case 0:
+    //            ObjectiveManager.instance.SetCurrentObjective(ObjectiveManager.State.LookOutTheWindows);
+    //            ObjectiveManager.instance.GetCurrentObjective().SetIsActive(true);
+    //            SwitchCamera.instance.SwitchTo(mainCam, monopolyCam);
+    //            break;
+    //    }
+    //}
 
     public void AdvanceDialogueScene()
     {

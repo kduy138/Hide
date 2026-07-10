@@ -6,11 +6,9 @@ public class DialogueBoxUI : MonoBehaviour
     {
         DialogueManager.instance.OnDialogueStarted += DialogueManager_OnDialogueStarted;
         DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
-
-        //Hide();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         DialogueManager.instance.OnDialogueStarted -= DialogueManager_OnDialogueStarted;
         DialogueManager.instance.OnDialogueEnded -= DialogueManager_OnDialogueEnded;
@@ -18,6 +16,7 @@ public class DialogueBoxUI : MonoBehaviour
 
     private void DialogueManager_OnDialogueStarted(object sender, System.EventArgs e)
     {
+        Debug.LogError("Showing Dialogue UI");
         Show();
     }
     private void DialogueManager_OnDialogueEnded(object sender, System.EventArgs e)

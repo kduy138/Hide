@@ -2663,6 +2663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectiveUI
   container: {fileID: 274519865}
+  currentObjectiveNameTxt: {fileID: 1687233002}
 --- !u!4 &347819026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2794201286520329439, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
@@ -3228,7 +3229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2551629c2476be3489613a55cbc776b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
-  currentObjectiveNameTxt: {fileID: 1687233002}
   objectives:
   - state: 1
     objectiveDes: Look out the windows to see outside situation.
@@ -4144,7 +4144,7 @@ MonoBehaviour:
   sceneIdx: 1
   dialogueLines:
   - id: 0
-    speakerName: Scene 2
+    speakerName: Scene 2 Line 1
     dialougeTxt: This is scene_2 dialogue.
     cameraEvent:
       hasCameraEvent: 0
@@ -4152,8 +4152,8 @@ MonoBehaviour:
     dialogueEvent:
       hasDialogueEvent: 0
       eventObj: {fileID: 0}
-  - id: 0
-    speakerName: Scene 2
+  - id: 1
+    speakerName: Scene 2 Line 2
     dialougeTxt: This is scene_2 dialogue line 2.
     cameraEvent:
       hasCameraEvent: 0
@@ -4504,6 +4504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befe93a49059e34449fc74b3b768ed11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SwitchCamera
+  monopolyCam: {fileID: 490244021}
+  mainCam: {fileID: 330585543}
+  windowsCam: {fileID: 964854355}
 --- !u!1 &621811935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6318294788911552847, guid: c0c651d175b61834899574b825c134e2, type: 3}
@@ -4796,23 +4799,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57a119bb2364d244a67cd91fdb71d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueScene
-  sceneIdx: 1
+  sceneIdx: 2
   dialogueLines:
   - id: 0
     speakerName: Scene 3
     dialougeTxt: This is scene_3 dialogue line.
     cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 293376557}
     dialogueEvent:
       hasDialogueEvent: 0
       eventObj: {fileID: 0}
-  - id: 0
+  - id: 1
     speakerName: Scene 3
     dialougeTxt: This is scene_3 dialogue line 2.
     cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
+      hasCameraEvent: 1
+      lookAtTarget: {fileID: 873203405}
     dialogueEvent:
       hasDialogueEvent: 0
       eventObj: {fileID: 0}
@@ -6155,8 +6158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc9b8199eaf6c14c8f1f0bafce9a3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  monopolyCam: {fileID: 490244021}
-  mainCam: {fileID: 330585543}
 --- !u!4 &991787781
 Transform:
   m_ObjectHideFlags: 0
@@ -8237,195 +8238,11 @@ MonoBehaviour:
       hasDialogueEvent: 0
       eventObj: {fileID: 0}
   - id: 1
-    speakerName: Ravi
-    dialougeTxt: '"Come on, sweet baby Jesus. I just need a four."'
+    speakerName: Test
+    dialougeTxt: Test
     cameraEvent:
       hasCameraEvent: 1
       lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 2
-    speakerName: Ravi
-    dialougeTxt: He dropped them onto the board. "Fuck!"
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 3
-    speakerName: Your thought
-    dialougeTxt: I tried to make sense of it. Just a word on my screen - black text
-      on all white background, a rather classical-looking font. "HIDE!"
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 4
-    speakerName: 
-    dialougeTxt: You tapped, rather impatienly, on the expensive rectangle. The text
-      wouldn't disappear.
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 5
-    speakerName: Evelyn
-    dialougeTxt: '"<player>," she called, like a teacher busting a student. "You''re
-      fucking addicted. Play board games like a normal human."'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 611640932}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 6
-    speakerName: <player>
-    dialougeTxt: '"Yeah. I - sorry." I put the phone to the side. I grabbed a dice,
-      rolled a three, landed on a B & O Railroad. After two seconds of thought. "Nah,
-      fuck the railroads."'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 784308567}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 7
-    speakerName: 
-    dialougeTxt: "Of course, we weren\u2019t animals. If someone didn\u2019t want
-      to buy a property, that was fine. No auctions or any of that nonsense. House
-      rules."
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 8
-    speakerName: Your thought
-    dialougeTxt: 'I felt the apartment rumble, just for a split second. As if we
-      were on the edge of an earthquake. I tensed, briefly. '
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
-    dialogueEvent:
-      hasDialogueEvent: 1
-      eventObj: {fileID: 1262312740}
-  - id: 9
-    speakerName: Ravi
-    dialougeTxt: Talking slowly as if not to jinx it. "I don't think that was an
-      earthquake?"
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 10
-    speakerName: Your thought
-    dialougeTxt: I grappled with the sad, likely hacked state of my phone - and that
-      weird word keep appearing in my head.
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 11
-    speakerName: Hiro
-    dialougeTxt: '"Damn, that''s fucking weird." half-laughing.'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 873203405}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 12
-    speakerName: <player>
-    dialougeTxt: '"What?" I asked Hiro.'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 873203405}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 13
-    speakerName: Hiro
-    dialougeTxt: '"My phone screen had been replace by a weird white screen with
-      the word ''HIDE'' on it."'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 873203405}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 14
-    speakerName: Evelyn
-    dialougeTxt: '"The fuck? What is this? My phone is showing the same thing."'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 611640932}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 15
-    speakerName: <player>
-    dialougeTxt: I grew a bit nervous. "Ravi, where is your phone?"
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 16
-    speakerName: Ravi
-    dialougeTxt: '"I''m sure it''s somewhere."'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 17
-    speakerName: 
-    dialougeTxt: 'A simple message now appeared on the big screen. '
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 1681358216}
-    dialogueEvent:
-      hasDialogueEvent: 1
-      eventObj: {fileID: 747948373}
-  - id: 18
-    speakerName: Hiro
-    dialougeTxt: '"Is that like an amber alert?"'
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 873203405}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 19
-    speakerName: Ravi
-    dialougeTxt: "\"I mean I guess but that\u2019s a push notification, this is like,
-      completely overtaking the screen. On different hardware too.\""
-    cameraEvent:
-      hasCameraEvent: 1
-      lookAtTarget: {fileID: 293376557}
-    dialogueEvent:
-      hasDialogueEvent: 0
-      eventObj: {fileID: 0}
-  - id: 20
-    speakerName: Your thought
-    dialougeTxt: A thought came over you. You want to look out the windows to see
-      if something is happening out there too.
-    cameraEvent:
-      hasCameraEvent: 0
-      lookAtTarget: {fileID: 0}
     dialogueEvent:
       hasDialogueEvent: 0
       eventObj: {fileID: 0}
@@ -8830,11 +8647,11 @@ MonoBehaviour:
   speakerNameTxt: {fileID: 1613050002}
   dialogueTxt: {fileID: 2282108}
   currentSpeakerName: 
-  currentDialogueID: 0
+  currentDialogueLineID: 0
   currentCameraEvent:
     hasCameraEvent: 0
     lookAtTarget: {fileID: 0}
-  dialogueTextSpeed: 0.02
+  dialogueTextSpeed: 0.01
   isTyping: 0
   isDialogueFinished: 1
   dialogueLines: []
@@ -13052,6 +12869,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1893245682}
     m_Modifications:
+    - target: {fileID: 511150076267878504, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
+      propertyPath: m_Radius
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 511150076267878504, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511150076267878504, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2794201286520329439, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.355
@@ -13095,10 +12924,6 @@ PrefabInstance:
     - target: {fileID: 7322149195794437757, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
       propertyPath: m_Name
       value: PressToSit
-      objectReference: {fileID: 0}
-    - target: {fileID: 7322149195794437757, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653006493408362714, guid: e710244cb00e56f45b99533da2cdf0fd, type: 3}
       propertyPath: mainCamera

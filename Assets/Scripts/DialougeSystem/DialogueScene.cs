@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class DialogueScene : MonoBehaviour
 {
+    public enum SceneIndex
+    {
+        Scene_1,
+        Scene_2,
+        Scene_3,
+    }
+
     [SerializeField]
     private int sceneIdx;
 
@@ -33,6 +40,9 @@ public class DialogueScene : MonoBehaviour
     {
         if (sceneIdx != GameManager.instance.GetCurrentDialogueSceneIdx()) return;
         if (dialogueStarted) return;
+
+        Debug.LogError("Scene Index: " + sceneIdx);
+        Debug.LogError("Starting Dialogue");
 
         DialogueManager.instance.StartDialogue(dialogueLines);
         dialogueStarted = true;

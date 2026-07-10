@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private string currentSpeakerName;
     [SerializeField]
-    private int currentDialogueID;
+    private int currentDialogueLineID;
     [SerializeField]
     private CameraEvent currentCameraEvent;
     private DialogueEvent currentDialogueEvent;
@@ -127,7 +127,7 @@ public class DialogueManager : MonoBehaviour
         dialogueTxt.text = "";
         speakerNameTxt.text = dialogueLine.GetSpeakerName();
         currentSpeakerName = dialogueLine.GetSpeakerName();
-        currentDialogueID = dialogueLine.GetDialogueID();
+        currentDialogueLineID = dialogueLine.GetDialogueLineID();
 
         if (dialogueLine.GetCameraEvent() != null)
         {
@@ -167,7 +167,7 @@ public class DialogueManager : MonoBehaviour
 
     public int GetCurrentDialogueID()
     {
-        return currentDialogueID;
+        return currentDialogueLineID;
     }
 
     public CameraEvent GetCurrentCameraEvent()

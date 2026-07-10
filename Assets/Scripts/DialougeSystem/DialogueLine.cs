@@ -29,7 +29,7 @@ public class DialogueLine
         return dialougeTxt.Replace("<player>", Player.instance.GetPlayerName());
     }
 
-    public int GetDialogueID()
+    public int GetDialogueLineID()
     {
         return id;
     }

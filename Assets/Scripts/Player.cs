@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnOpenClose(object sender, EventArgs e)
     {
-        HandleInteraction();
+        HandlePlayerDoorInteraction();
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
@@ -109,10 +109,10 @@ public class Player : MonoBehaviour
     {
         if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
 
-        Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
+        //Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
 
-        float horizontalInput = inputVector.x;
-        float verticalInput = inputVector.y;
+        //float horizontalInput = inputVector.x;
+        //float verticalInput = inputVector.y;
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, phoneInteractDistance))
         {
@@ -120,8 +120,17 @@ public class Player : MonoBehaviour
                 phone.Interact();
                 OnPlayerHasPhone?.Invoke(this, EventArgs.Empty);
             }
+            if (hit.transform.TryGetComponent(out Sit sit))
+            {
+                sit.OnSit();
+            }
         }
 
+        
+    }
+
+    private void HandlePlayerDoorInteraction()
+    {
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitDoor, doorInteractDistance))
         {
             if (hitDoor.transform.TryGetComponent(out IDoor door))

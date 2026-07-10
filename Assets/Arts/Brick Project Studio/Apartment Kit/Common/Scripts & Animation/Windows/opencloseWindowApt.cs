@@ -55,14 +55,14 @@ namespace SojaExiles
 			openandclosewindow.Play("Openingwindow");
 			open = true;
             yield return new WaitForSeconds(.5f);
+
             if (ObjectiveManager.instance.GetCurrentState() == ObjectiveManager.State.LookOutTheWindows)
             {
-                SwitchCamera.instance.SwitchTo(windowsCam, mainCam);
 				GameManager.instance.SetGameState(GameManager.State.Dialogue);
 
 				Objective currentObjective = ObjectiveManager.instance.GetCurrentObjective();
                 currentObjective.SetCompleted(true);
-				currentObjective.SetIsActive(false);
+                currentObjective.SetIsActive(false);
             }
         }
 
@@ -72,7 +72,5 @@ namespace SojaExiles
 			open = false;
 			yield return new WaitForSeconds(.5f);
 		}
-
-
 	}
 }

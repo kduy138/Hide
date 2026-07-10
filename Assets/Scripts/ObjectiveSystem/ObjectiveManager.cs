@@ -1,7 +1,5 @@
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -17,8 +15,6 @@ public class ObjectiveManager : MonoBehaviour
 
     private State state;
 
-    [SerializeField]
-    private TextMeshProUGUI currentObjectiveNameTxt;
     [SerializeField]
     private Objective[] objectives;
 
@@ -36,6 +32,11 @@ public class ObjectiveManager : MonoBehaviour
         state = State.None;
     }
 
+    private void Start()
+    {
+        DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
+    }
+
     private void Update()
     {
         switch(state)
@@ -45,6 +46,21 @@ public class ObjectiveManager : MonoBehaviour
             case State.LookOutTheWindows:
                 break;
             case State.FindThePhone:
+                break;
+        }
+    }
+
+    private void DialogueManager_OnDialogueEnded(object sender, System.EventArgs e)
+    {
+        int currentDialogueSceneIdx = GameManager.instance.GetCurrentDialogueSceneIdx();
+        switch(currentDialogueSceneIdx) {
+            case (int)DialogueScene.SceneIndex.Scene_1:
+                SetCurrentObjective(State.LookOutTheWindows);
+                GetCurrentObjective().SetIsActive(true);
+                break;
+            case (int)DialogueScene.SceneIndex.Scene_2:
+                SetCurrentObjective(State.TellYourFriends);
+                GetCurrentObjective().SetIsActive(true);
                 break;
         }
     }
@@ -69,12 +85,7 @@ public class ObjectiveManager : MonoBehaviour
         Objective currentObjective = System.Array.Find(objectives, o => o.GetState() == value);
         if (currentObjective != null)
         {
-            currentObjectiveNameTxt.text = currentObjective.GetObjectiveDes();
             currentObjective.SetIsActive(true);
-        }
-        else
-        {
-            currentObjectiveNameTxt.text = string.Empty;
         }
     } 
 
