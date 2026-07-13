@@ -41,9 +41,6 @@ public class DialogueScene : MonoBehaviour
         if (sceneIdx != GameManager.instance.GetCurrentDialogueSceneIdx()) return;
         if (dialogueStarted) return;
 
-        Debug.LogError("Scene Index: " + sceneIdx);
-        Debug.LogError("Starting Dialogue");
-
         DialogueManager.instance.StartDialogue(dialogueLines);
         dialogueStarted = true;
 

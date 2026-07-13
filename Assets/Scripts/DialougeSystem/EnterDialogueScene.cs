@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Sit : MonoBehaviour
+public class EnterDialogueScene : MonoBehaviour
 {
-    public void OnSit()
+    public void OnEnter()
     {
         if (ObjectiveManager.instance.GetCurrentState() == ObjectiveManager.State.TellYourFriends)
         {
@@ -11,6 +11,13 @@ public class Sit : MonoBehaviour
             Objective currentObjective = ObjectiveManager.instance.GetCurrentObjective();
             currentObjective.SetCompleted(true);
             currentObjective.SetIsActive(false);
+
+            DestroySelf();
         }
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

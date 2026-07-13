@@ -109,20 +109,15 @@ public class Player : MonoBehaviour
     {
         if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
 
-        //Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
-
-        //float horizontalInput = inputVector.x;
-        //float verticalInput = inputVector.y;
-
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, phoneInteractDistance))
         {
             if (hit.transform.TryGetComponent(out Phone phone)) {
                 phone.Interact();
                 OnPlayerHasPhone?.Invoke(this, EventArgs.Empty);
             }
-            if (hit.transform.TryGetComponent(out Sit sit))
+            if (hit.transform.TryGetComponent(out EnterDialogueScene enter))
             {
-                sit.OnSit();
+                enter.OnEnter();
             }
         }
 

@@ -16,7 +16,6 @@ public class DialogueBoxUI : MonoBehaviour
 
     private void DialogueManager_OnDialogueStarted(object sender, System.EventArgs e)
     {
-        Debug.LogError("Showing Dialogue UI");
         Show();
     }
     private void DialogueManager_OnDialogueEnded(object sender, System.EventArgs e)

@@ -41,19 +41,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.47
+      value: 6.609
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.273
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97,16 +97,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_Name
-      value: Ravi_Sitting
+      value: Ravi
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: b63f31e166d1a16419c78cdae368723a, type: 3}
+      objectReference: {fileID: 9000000, guid: eb0538b287cdaa54286bcab5977a6606, type: 3}
     - target: {fileID: 5866666021909216657, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f7b3f5dccc6a7684ba579b1887b2119f, type: 2}
+      objectReference: {fileID: 9100000, guid: 2a7df5bbda5d3124dbe1430b2e514468, type: 2}
     - target: {fileID: 5866666021909216657, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       propertyPath: m_CullingMode
       value: 0
@@ -125,12 +125,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6674917153480902865}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6413399497727921569}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8343246081841052432}
   m_SourcePrefab: {fileID: 100100000, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
 --- !u!4 &2372674551126908580 stripped
 Transform:
@@ -169,30 +163,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6413399497727921569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9064106357584696989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5d56666c2f8e643a435dafca7769cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HeadLook
-  headObj: {fileID: 2372674551126908580}
-  targetObj: {fileID: 0}
---- !u!114 &8343246081841052432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9064106357584696989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 629c623adea35544e880570fe8d4c19f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CharacterDialogueInfo
-  characterFocusPoint: {fileID: 8791673369606561475}
