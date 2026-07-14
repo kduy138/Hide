@@ -11,6 +11,8 @@ public class SwitchCamera : MonoBehaviour
     private GameObject mainCam;
     [SerializeField]
     private GameObject windowsCam;
+    [SerializeField]
+    private GameObject talkToFriendCam;
 
     private void Awake()
     {
@@ -41,7 +43,7 @@ public class SwitchCamera : MonoBehaviour
                 SwitchTo(windowsCam, mainCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:
-                SwitchTo(monopolyCam, mainCam);
+                SwitchTo(talkToFriendCam, mainCam);
                 break;
         }
     }

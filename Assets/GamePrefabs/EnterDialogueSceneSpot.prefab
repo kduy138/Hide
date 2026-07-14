@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5845394529356188715}
   - component: {fileID: 6820724019613199194}
   m_Layer: 3
-  m_Name: SitSpot
+  m_Name: EnterDialogueSceneSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

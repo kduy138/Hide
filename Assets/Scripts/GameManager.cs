@@ -55,11 +55,6 @@ public class GameManager : MonoBehaviour
         challenge = Challenge.None;
     }
 
-    private void Start()
-    {
-        //DialogueManager.instance.OnDialogueEnded += DialogueManager_OnDialogueEnded;
-    }
-
     private void Update()
     {
         switch (state)
@@ -113,18 +108,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-    //private void DialogueManager_OnDialogueEnded(object sender, EventArgs e)
-    //{
-    //    switch(currentDialogueSceneIdx)
-    //    {
-    //        case 0:
-    //            ObjectiveManager.instance.SetCurrentObjective(ObjectiveManager.State.LookOutTheWindows);
-    //            ObjectiveManager.instance.GetCurrentObjective().SetIsActive(true);
-    //            SwitchCamera.instance.SwitchTo(mainCam, monopolyCam);
-    //            break;
-    //    }
-    //}
 
     public void AdvanceDialogueScene()
     {
