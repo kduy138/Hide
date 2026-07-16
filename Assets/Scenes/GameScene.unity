@@ -5186,6 +5186,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TV
   tvScreen: {fileID: 747948373}
+--- !u!1 &758401651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 758401652}
+  - component: {fileID: 758401653}
+  m_Layer: 0
+  m_Name: InteractableObjManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &758401652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758401651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1538054682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &758401653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758401651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e42e1dda7cb51441a0ea3dc271332b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObjectManager
+  talkToYourFriendInte: {fileID: 1237064018}
 --- !u!4 &760247713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 646888896587959858, guid: 5aac716a11271124887a33ec1836f27b, type: 3}
@@ -7585,6 +7630,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235566760}
   m_CullTransparentMesh: 1
+--- !u!1 &1237064018 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 649059289038507246, guid: 991b1463b9026c24b9ab140b443987b5, type: 3}
+  m_PrefabInstance: {fileID: 1642158448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1244300555
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,6 +9199,7 @@ Transform:
   - {fileID: 2080419792}
   - {fileID: 472053441}
   - {fileID: 348508311}
+  - {fileID: 758401652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539780951
@@ -10005,7 +10056,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 649059289038507246, guid: 991b1463b9026c24b9ab140b443987b5, type: 3}
       propertyPath: m_Name
-      value: EnterDialogueSceneSpot
+      value: talkToYourFriendInte
+      objectReference: {fileID: 0}
+    - target: {fileID: 649059289038507246, guid: 991b1463b9026c24b9ab140b443987b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 856128143288511347, guid: 991b1463b9026c24b9ab140b443987b5, type: 3}
       propertyPath: m_text
