@@ -57,13 +57,15 @@ public class CharactersManager : MonoBehaviour
             case (int)DialogueScene.SceneIndex.Scene_1:
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
-                SpawnCharacters(
-                        new CharacterSpawnData { prefab = evelyn, spawnPoint = evelynSpawnPoint },
-                        new CharacterSpawnData { prefab = hiro, spawnPoint = hiroSpawnPoint},
-                        new CharacterSpawnData { prefab = ravi, spawnPoint = raviSpawnPoint}
-                    );
+                //SpawnCharacters(
+                //        new CharacterSpawnData { prefab = evelyn, spawnPoint = evelynSpawnPoint },
+                //        new CharacterSpawnData { prefab = hiro, spawnPoint = hiroSpawnPoint},
+                //        new CharacterSpawnData { prefab = ravi, spawnPoint = raviSpawnPoint}
+                //    );
+                EnableCharacters(evelyn, hiro, ravi);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:
+
                 break;
         }
     }
@@ -97,6 +99,14 @@ public class CharactersManager : MonoBehaviour
         foreach (CharacterSpawnData data in spawnCharacters)
         {
             if (data.prefab != null) Spawn(data.prefab, data.spawnPoint);
+        }
+    }
+
+    private void EnableCharacters(params GameObject[] enableCharacters)
+    {
+        foreach (GameObject c in enableCharacters)
+        {
+           if (c != null) c.SetActive(true);
         }
     }
 

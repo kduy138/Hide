@@ -15,7 +15,10 @@ public class SceneCam : MonoBehaviour
         if (currentCameraEvent.hasCameraEvent && currentCameraEvent.lookAtTarget != null)
         {
             CharacterDialogueInfo cdi  = currentCameraEvent.lookAtTarget.GetComponent<CharacterDialogueInfo>();
-            sceneCam.LookAt = cdi.characterFocusPoint.transform;
+            if (sceneCam != null)
+            {
+                sceneCam.LookAt = cdi.characterFocusPoint.transform;
+            }
         }
     }    
 }
