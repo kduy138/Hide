@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class SwitchCamera : MonoBehaviour
@@ -10,9 +11,11 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField]
     private GameObject mainCam;
     [SerializeField]
-    private GameObject windowsCam;
+    private CinemachineVirtualCamera monopolyVirtualCam;
     [SerializeField]
-    private GameObject talkToFriendCam;
+    private CinemachineVirtualCamera windowsVirtualCam;
+    [SerializeField]
+    private CinemachineVirtualCamera talkToFriendVirtualCam;
 
     private void Awake()
     {
@@ -40,10 +43,10 @@ public class SwitchCamera : MonoBehaviour
             case (int)DialogueScene.SceneIndex.Scene_1:
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
-                SwitchTo(windowsCam, mainCam);
+                CinemachineCamSwitch(windowsVirtualCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:
-                SwitchTo(talkToFriendCam, mainCam);
+                CinemachineCamSwitch(talkToFriendVirtualCam);
                 break;
         }
     }
@@ -57,7 +60,7 @@ public class SwitchCamera : MonoBehaviour
                 SwitchTo(mainCam, monopolyCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
-                SwitchTo(mainCam, windowsCam);
+                //SwitchTo(mainCam, windowsCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:
                 break;
@@ -68,5 +71,18 @@ public class SwitchCamera : MonoBehaviour
     {
         targetCam.SetActive(true);
         currentCam.SetActive(false);
+    }
+
+    public void CinemachineCamSwitch(CinemachineVirtualCamera targetCam)
+    {
+        SetAllPriority(0);
+        targetCam.Priority = 10;
+    }
+
+    private void SetAllPriority(int value)
+    {
+        monopolyVirtualCam.Priority = value;
+        windowsVirtualCam.Priority = value;
+        talkToFriendVirtualCam.Priority = value;
     }
 }
