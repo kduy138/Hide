@@ -1,9 +1,10 @@
+using Cinemachine;
 using UnityEngine;
 
 public class Billboarding : MonoBehaviour
 {
     [SerializeField]
-    private Camera mainCamera;
+    private CinemachineVirtualCamera mainCamera;
 
     private void Update()
     {

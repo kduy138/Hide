@@ -7,9 +7,7 @@ public class SwitchCamera : MonoBehaviour
 
     [Header("Cameras")]
     [SerializeField]
-    private GameObject monopolyCam;
-    [SerializeField]
-    private GameObject mainCam;
+    private CinemachineVirtualCamera mainCam;
     [SerializeField]
     private CinemachineVirtualCamera monopolyVirtualCam;
     [SerializeField]
@@ -41,6 +39,7 @@ public class SwitchCamera : MonoBehaviour
         switch (currentDialogueSceneIdx)
         {
             case (int)DialogueScene.SceneIndex.Scene_1:
+                //CinemachineCamSwitch(monopolyVirtualCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
                 CinemachineCamSwitch(windowsVirtualCam);
@@ -57,12 +56,13 @@ public class SwitchCamera : MonoBehaviour
         switch (currentDialogueSceneIdx)
         {
             case (int)DialogueScene.SceneIndex.Scene_1:
-                SwitchTo(mainCam, monopolyCam);
+                CinemachineCamSwitch(mainCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
-                //SwitchTo(mainCam, windowsCam);
+                CinemachineCamSwitch(mainCam);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:
+                CinemachineCamSwitch(mainCam);
                 break;
         }
     }
@@ -81,6 +81,7 @@ public class SwitchCamera : MonoBehaviour
 
     private void SetAllPriority(int value)
     {
+        mainCam.Priority = value;
         monopolyVirtualCam.Priority = value;
         windowsVirtualCam.Priority = value;
         talkToFriendVirtualCam.Priority = value;
