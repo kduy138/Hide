@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6351360582826553200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6702953291421798044}
+  m_Layer: 0
+  m_Name: HeadForward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6702953291421798044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6351360582826553200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.022378922, y: 0.23335715, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3127522150701332446}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8791673369606561475
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +149,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6515712193588681746, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 6702953291421798044}
     - targetCorrespondingSourceObject: {fileID: -3321919801592875672, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8498667644250710216}
@@ -138,6 +172,11 @@ PrefabInstance:
 --- !u!4 &2372674551126908580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3321919801592875672, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
+  m_PrefabInstance: {fileID: 8145680649081007052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3127522150701332446 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6515712193588681746, guid: 580103c3fe57b3040bfde5c02cc43467, type: 3}
   m_PrefabInstance: {fileID: 8145680649081007052}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &9064106357584696989 stripped
@@ -186,6 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeadLook
   headObj: {fileID: 2372674551126908580}
   targetObj: {fileID: 0}
+  headForward: {fileID: 6702953291421798044}
+  minAngle: -80
+  maxAngle: 80
 --- !u!114 &8343246081841052432
 MonoBehaviour:
   m_ObjectHideFlags: 0
