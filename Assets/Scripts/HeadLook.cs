@@ -1,48 +1,63 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+
 public class HeadLook : MonoBehaviour
 {
-    [SerializeField]
-    private Transform headObj;
-    [SerializeField]
-    private Transform targetObj;
-    [SerializeField]
-    private Transform headForward;
-    [SerializeField]
-    private float minAngle;
-    [SerializeField]
-    private float maxAngle;
+    [Header("Look Settings")]
+    [SerializeField] private float lookDistance = 5f;
+    [SerializeField] private float viewAngle = 120f;
+    [SerializeField] private float smoothSpeed = 5f;
 
-    private float lookSpeed = 7.0f;
-    private Quaternion defaultRotation;
+    private Animator animator;
 
-    private Vector3 offsetEuler = new Vector3(0, -90, 0);
+    private float currentWeight;
 
-    private void Start()
+    private void Awake()
     {
-        defaultRotation = headObj.rotation;
+        animator = GetComponent<Animator>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        Vector3 dir = targetObj.position - headObj.position;
-        if (dir.sqrMagnitude < 0.0001f) return;
-
-        float angle = Vector3.SignedAngle(dir, headForward.forward, headForward.up);
-        Debug.Log("Angle: " + angle);
-
-        if (angle < maxAngle && angle > minAngle)
+        if (Camera.main == null)
         {
-            //Quaternion targetRotation = Quaternion.LookRotation(dir, Vector3.up);
-            Quaternion targetRotation = Quaternion.LookRotation(targetObj.position - headObj.position);
-            Quaternion offset = Quaternion.Euler(offsetEuler);
-            defaultRotation = Quaternion.Slerp(defaultRotation, targetRotation, lookSpeed * Time.deltaTime);
-            headObj.rotation = defaultRotation * Quaternion.Inverse(offset);
+            currentWeight = Mathf.MoveTowards(
+                currentWeight,
+                0,
+                smoothSpeed * Time.deltaTime);
+
+            return;
         }
-        else
-        {
-            defaultRotation = Quaternion.Slerp(defaultRotation, headForward.rotation, lookSpeed * Time.deltaTime);
-            headObj.rotation = defaultRotation;
-        }
+
+        Vector3 dir = Camera.main.transform.position - transform.position;
+
+        float distance = dir.magnitude;
+
+        float angle = Vector3.Angle(transform.forward, dir);
+
+        bool canLook =
+            distance <= lookDistance &&
+            angle <= viewAngle * 0.5f;
+
+        float targetWeight = canLook ? 1f : 0f;
+
+        currentWeight = Mathf.MoveTowards(
+            currentWeight,
+            targetWeight,
+            smoothSpeed * Time.deltaTime);
+    }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        animator.SetLookAtWeight(
+            currentWeight,
+            0.2f,
+            0.8f,
+            1f,
+            0.5f);
+
+        if (Camera.main != null)
+            animator.SetLookAtPosition(Camera.main.transform.position);
     }
 }
