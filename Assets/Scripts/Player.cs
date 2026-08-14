@@ -28,6 +28,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float phoneInteractDistance;
 
+    [Header("Jump Settings")]
+    [SerializeField]
+    private float jumpForce = 5f;
+    [SerializeField]
+    private float fallGravityMultiplier = 3f;
+
+
     [Header("Flags")]
     [SerializeField]
     private bool isMoving = false;
@@ -39,6 +46,8 @@ public class Player : MonoBehaviour
     private bool inHidingSpot = false;
     [SerializeField]
     private bool hasPhone = false;
+    [SerializeField]
+    private bool isJumping = false;
 
     private void Awake()
     {
@@ -60,6 +69,7 @@ public class Player : MonoBehaviour
         GameInput.instance.OnCrouchAction += GameInput_OnCrouchAction;
         GameInput.instance.OnInteractAction += GameInput_OnInteractAction;
         GameInput.instance.OnOpenClose += GameInput_OnOpenClose;
+        GameInput.instance.OnJump += GameInput_OnJump;
     }
 
     private void OnDestroy()
@@ -88,6 +98,8 @@ public class Player : MonoBehaviour
         if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
 
         HandlePlayerMovement();
+        HandleJumpGravity();
+        HandlePlayerGrounded();
     }
 
     private void GameInput_OnCrouchAction(object sender, System.EventArgs e)
@@ -103,6 +115,11 @@ public class Player : MonoBehaviour
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
         HandleInteraction();
+    }
+
+    private void GameInput_OnJump(object sender, EventArgs e)
+    {
+        HandlePlayerJump();
     }
 
     private void HandleInteraction()
@@ -126,6 +143,8 @@ public class Player : MonoBehaviour
 
     private void HandlePlayerDoorInteraction()
     {
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hitDoor, doorInteractDistance))
         {
             if (hitDoor.transform.TryGetComponent(out IDoor door))
@@ -137,6 +156,8 @@ public class Player : MonoBehaviour
 
     private void HandlePlayerMovement()
     {
+        if (isJumping) return;
+
         Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
 
         float playerRadius = 0.5f;
@@ -193,6 +214,31 @@ public class Player : MonoBehaviour
         }
 
         isMoving = moveDir != Vector3.zero;
+    }
+
+    private void HandlePlayerJump()
+    {
+        if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.y);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isJumping = true;
+    }
+
+    private void HandleJumpGravity()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallGravityMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
+
+    private void HandlePlayerGrounded()
+    {
+        if (rb.linearVelocity.y == 0)
+        {
+            isJumping = false;
+        }
     }
 
     public void SetPlayerHasPhone(bool value)

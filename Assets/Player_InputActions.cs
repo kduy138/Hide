@@ -154,6 +154,15 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""dff741c2-b3b7-49a5-bc0c-79aeafdff7f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,6 +352,17 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""StopMarker"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76007775-8221-487b-bab3-8c128972cc7a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -386,6 +406,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         m_Player_OpenClose = m_Player.FindAction("OpenClose", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_StopMarker = m_Player.FindAction("StopMarker", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // Test
         m_Test = asset.FindActionMap("Test", throwIfNotFound: true);
         m_Test_SwitchCamera = m_Test.FindAction("SwitchCamera", throwIfNotFound: true);
@@ -477,6 +498,7 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OpenClose;
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_StopMarker;
+    private readonly InputAction m_Player_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -516,6 +538,10 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/StopMarker".
         /// </summary>
         public InputAction @StopMarker => m_Wrapper.m_Player_StopMarker;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -563,6 +589,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @StopMarker.started += instance.OnStopMarker;
             @StopMarker.performed += instance.OnStopMarker;
             @StopMarker.canceled += instance.OnStopMarker;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -595,6 +624,9 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
             @StopMarker.started -= instance.OnStopMarker;
             @StopMarker.performed -= instance.OnStopMarker;
             @StopMarker.canceled -= instance.OnStopMarker;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -780,6 +812,13 @@ public partial class @Player_InputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnStopMarker(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Test" which allows adding and removing callbacks.

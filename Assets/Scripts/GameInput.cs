@@ -13,6 +13,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnDialogue;
     public event EventHandler OnPrologue;
     public event EventHandler OnStopMarker;
+    public event EventHandler OnJump;
 
     // Test events
     public event EventHandler OnSwitchCamera;
@@ -40,6 +41,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Dialogue.performed += Dialogue_performed;
         playerInputActions.Player.Dialogue.performed += Prologue_performed;
         playerInputActions.Player.StopMarker.performed += StopMarker_performed;
+        playerInputActions.Player.Jump.performed += Jump_performed;
 
         playerInputActions.Test.SwitchCamera.performed += SwitchCamera_performed;
     }
@@ -62,6 +64,12 @@ public class GameInput : MonoBehaviour
     {
         OnSwitchCamera?.Invoke(this, EventArgs.Empty);
     }
+
+    private void Jump_performed(InputAction.CallbackContext obj)
+    {
+        OnJump?.Invoke(this, EventArgs.Empty);
+    }
+
 
     private void Prologue_performed(InputAction.CallbackContext obj)
     {

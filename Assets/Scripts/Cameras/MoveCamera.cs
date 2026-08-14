@@ -8,14 +8,18 @@ public class MoveCamera : MonoBehaviour
 
     [Header("Settings")]
     private float playerStandHeight = 0f;
+    [SerializeField]
     private float playerCrouchHeight = 0.8f;
+    [SerializeField]
     private float crouchSpeed = 5f;
+    private float currentHeightOffset = 0f;
 
     private void Update()
     {
-        float targetHeight = Player.instance.IsCrouching() ? playerCrouchHeight : playerStandHeight;
+        float targetHeightoFfset = Player.instance.IsCrouching() ? playerCrouchHeight : playerStandHeight;
 
-        Vector3 targetPos = cameraPos.position - Vector3.up * targetHeight;
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * crouchSpeed);
+        currentHeightOffset = Mathf.Lerp(currentHeightOffset, targetHeightoFfset, Time.deltaTime * crouchSpeed);
+
+        transform.position = cameraPos.position - Vector3.up * currentHeightOffset;
     }
 }
