@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
     private float jumpForce = 5f;
     [SerializeField]
     private float fallGravityMultiplier = 3f;
+    [SerializeField]
+    private Transform groundCheck;
+    [SerializeField]
+    private float groundCheckRadius = 0.2f;
+    [SerializeField]
+    private LayerMask groundLayer;
 
 
     [Header("Flags")]
@@ -156,8 +162,6 @@ public class Player : MonoBehaviour
 
     private void HandlePlayerMovement()
     {
-        if (isJumping) return;
-
         Vector2 inputVector = GameInput.instance.GetInputVectorNormalized();
 
         float playerRadius = 0.5f;
@@ -219,8 +223,10 @@ public class Player : MonoBehaviour
     private void HandlePlayerJump()
     {
         if (GameManager.instance.GetCurrentState() != GameManager.State.GamePlaying) return;
+        if (isJumping) return;
+        if (!IsGrounded()) return;
 
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isJumping = true;
     }
@@ -233,9 +239,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+
     private void HandlePlayerGrounded()
     {
-        if (rb.linearVelocity.y == 0)
+        if (IsGrounded() && isJumping)
         {
             isJumping = false;
         }
