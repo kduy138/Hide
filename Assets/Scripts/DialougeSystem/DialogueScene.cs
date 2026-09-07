@@ -50,6 +50,5 @@ public class DialogueScene : MonoBehaviour
     private void DialogueManager_OnDialogueEnded(object sender, System.EventArgs e)
     {
         DialogueManager.instance.OnDialogueEnded -= DialogueManager_OnDialogueEnded;
-        GameManager.instance.AdvanceDialogueScene();
     }
 }

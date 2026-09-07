@@ -57,11 +57,6 @@ public class CharactersManager : MonoBehaviour
             case (int)DialogueScene.SceneIndex.Scene_1:
                 break;
             case (int)DialogueScene.SceneIndex.Scene_2:
-                //SpawnCharacters(
-                //        new CharacterSpawnData { prefab = evelyn, spawnPoint = evelynSpawnPoint },
-                //        new CharacterSpawnData { prefab = hiro, spawnPoint = hiroSpawnPoint},
-                //        new CharacterSpawnData { prefab = ravi, spawnPoint = raviSpawnPoint}
-                //    );
                 EnableCharacters(evelyn, hiro, ravi);
                 break;
             case (int)DialogueScene.SceneIndex.Scene_3:

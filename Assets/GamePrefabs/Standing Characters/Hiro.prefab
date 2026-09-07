@@ -172,6 +172,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 337bc5d1a1943f34fa677305f5fe10d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2902860108408383773}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 337bc5d1a1943f34fa677305f5fe10d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5559642588023168262}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 337bc5d1a1943f34fa677305f5fe10d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6460681747009835932}
   m_SourcePrefab: {fileID: 100100000, guid: 337bc5d1a1943f34fa677305f5fe10d8, type: 3}
 --- !u!1 &4054755145471128876 stripped
 GameObject:
@@ -253,11 +259,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb5d56666c2f8e643a435dafca7769cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadLook
-  headObj: {fileID: 7305436772489182485}
-  targetObj: {fileID: 0}
-  headForward: {fileID: 5737922219186985143}
-  minAngle: -80
-  maxAngle: 80
+  lookDistance: 5
+  viewAngle: 120
+  smoothSpeed: 5
+--- !u!195 &5559642588023168262
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054755145471128876}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-6460681747009835932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054755145471128876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc70f8f258496b419421a7fe3dc141d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCNavMesh
 --- !u!4 &7305436772489182485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3321919801592875672, guid: 337bc5d1a1943f34fa677305f5fe10d8, type: 3}
